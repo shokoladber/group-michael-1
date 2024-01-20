@@ -1,2 +1,4 @@
-package controllers;public class HomeController {
+package controllers;
+
+public class HomeController {
 }

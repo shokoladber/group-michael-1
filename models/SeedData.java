@@ -1,2 +1,4 @@
-package models;public class SeedData {
+package models;
+
+public class SeedData {
 }

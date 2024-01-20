@@ -1,2 +1,4 @@
-package models;public class SeedBotanicalName {
+package models;
+
+public class SeedBotanicalName {
 }
