@@ -13,6 +13,16 @@ const Table = ({seedData}) =>{
                     <th>Indigenous Source</th>
                 </tr>
             </thead>
+            <tbody>
+                {seedData.map((data, id) =>
+                <tr>
+                    <td>{data.name}</td>
+                    <td>{data.rarity}</td>
+                    <td>{data.zone}</td>
+                    <td>{data.source}</td>
+                </tr>
+                )}
+            </tbody>
         </table>
 
     );
