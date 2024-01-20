@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
-    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="IndigenoUS-Seed-Exchange-Network" target="1.7" />
       <module name="IndigenoUS-Seed-Network-Exchange" target="1.7" />
+      <module name="IndigenoUS_Seed_Exchange_Network" target="17" />
       <module name="IndigenoUS_Seed_Network_Exchange" target="1.7" />
     </bytecodeTargetLevel>
   </component>
