@@ -11,6 +11,7 @@
     <bytecodeTargetLevel>
       <module name="IndigenoUS-Seed-Exchange-Network" target="1.7" />
       <module name="IndigenoUS-Seed-Network-Exchange" target="1.7" />
+      <module name="IndigenoUS_Seed_Network_Exchange" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

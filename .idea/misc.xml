@@ -13,6 +13,7 @@
       <set>
         <option value="$USER_HOME$/IndigenoUS-Seed-Exchange-Network/pom.xml" />
         <option value="$PROJECT_DIR$/IndigenoUS-Seed-Network-Exchange/pom.xml" />
+        <option value="$PROJECT_DIR$/IndigenoUS_Seed_Network_Exchange/pom.xml" />
       </set>
     </option>
   </component>
