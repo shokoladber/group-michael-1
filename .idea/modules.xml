@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IndigenoUS_Seed_Exchange_Network.iml" filepath="$PROJECT_DIR$/.idea/modules/IndigenoUS_Seed_Exchange_Network.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/IndigenoUS_Seed_Exchange_Network.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IndigenoUS_Seed_Exchange_Network.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/group-michael-1.iml" filepath="$PROJECT_DIR$/.idea/group-michael-1.iml" />
     </modules>
