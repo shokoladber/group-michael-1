@@ -1,5 +1,6 @@
 package org.launchcode.controllers;
 
+import jakarta.validation.Valid;
 import org.launchcode.model.User;
 import org.launchcode.model.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,10 @@ public class UserController {
         return "registration";
     }
 
-    @PostMapping("/registration")
-    public String processRegistration(@ModelAttribute User user) {
+    @PostMapping("/register")
+    public String processRegistration(@ModelAttribute @Valid User user) {
         userRepository.save(user);
         return "redirect:/login";
     }
 }
+
