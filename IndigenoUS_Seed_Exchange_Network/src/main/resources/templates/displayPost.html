@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8" />
-    <title th:text="${title}"></title>
+    <title>Title</title>
 </head>
 <body>
-<p th:each="title:${titles}" th:text="${title}"></p>
+<p><strong th:text="${title}"></strong> by <strong th:text="${author}"></strong></p>
 </body>
 </html>
