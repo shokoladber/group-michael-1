@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <title th:text="${title}"></title>
 </head>
-<body>
-<p th:each="title:${titles}" th:text="${title}"></p>
+<p th:replace= "fragments: :navbar"></p>
+<div th:if="${titles.size()} > 0">
+    <th:block th:each="title:${titles}">
+        <p><strong th:text="${title.key}"></strong> by <strong th:text="${title.value}"></strong></p>
+    </th:block>
+</div>
+<p th:unless="${titles.size()} > 0">No titles found.</p>
+
 </body>
 </html>
