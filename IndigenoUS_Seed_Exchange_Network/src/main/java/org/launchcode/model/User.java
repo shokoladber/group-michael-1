@@ -12,19 +12,15 @@ public class User {
     @GeneratedValue
 
     private Integer id;
-    private String fullName;
     private String email;
     private String password;
-    private String role;
 
     public User(){}
 
     public User(Integer id, String fullName, String email, String password, String role) {
         this.id = id;
-        this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public Integer getId() {
@@ -35,13 +31,6 @@ public class User {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public String getEmail() {
         return email;
@@ -57,13 +46,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }
