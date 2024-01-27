@@ -1,7 +1,6 @@
 package org.launchcode.model;
 
 
-
 import jakarta.persistence.*;
 
 
