@@ -7,24 +7,35 @@
 <body>
 <p th:replace="fragments::navbar"></p>
 <br/>
-    <form method="post" >
+
+    <form method="post" <!--enctype="multipart/form-data"-->
         <label>Title:
-            <input type="text" name="title">
+            <input type="text" th:field="${blog.title}">
+            <span th:errors="${blog.title}"></span>
         </label>
-
+<br/>
         <label>Author:
-            <input type="text" name="author">
+            <input type="text" th:field="${blog.author}">
+            <span th:errors="${blog.author}"></span>
         </label>
 <br/>
 <br/>
 
-        </label> Add Content
+         <!--   <input type="file" id="myFile" name="filename"> -->
+
+
+
+<br/>
+
+        </label> Add Content:
         <br/>
-        <textarea name="content" cols="75" rows="50"></textarea>
+        <textarea th:field="${blog.content}" cols="75" rows="50"></textarea>
+        <span th:errors="${blog.content}"></span>
         </label>
 <br/>
 <br/>
         <input type="submit" value="Submit">
     </form>
+
 </body>
 </html>

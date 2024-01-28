@@ -1,17 +1,14 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
+import jakarta.validation.Valid;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogData;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 @Controller
 public class BlogController {
@@ -29,13 +26,19 @@ public class BlogController {
     }
 
 @GetMapping("/new-post")
-    public String newPostForm(){
+    public String newPostForm(Model model){
+    model.addAttribute("blog", new Blog());
+
         return "newPost";
         }
 
 @PostMapping("/new-post")
-    public String handlePostForm(Model model, @ModelAttribute Blog blog){
- model.addAttribute("blog", blog);
+    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors){
+    model.addAttribute("blog", blog);
+    if(errors.hasErrors()){
+        return "newPost";
+    }
+
  blogData.add(blog);
     return "displayPost";
 }
