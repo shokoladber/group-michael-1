@@ -8,7 +8,7 @@
 <p th:replace="fragments::navbar"></p>
 <br/>
 
-    <form method="post" <!--enctype="multipart/form-data"-->
+    <form method="post" enctype="multipart/form-data">
         <label>Title:
             <input type="text" th:field="${blog.title}">
             <span th:errors="${blog.title}"></span>
@@ -21,7 +21,7 @@
 <br/>
 <br/>
 
-         <!--   <input type="file" id="myFile" name="filename"> -->
+           <input type="file" id="myFile" name="filename">
 
 
 

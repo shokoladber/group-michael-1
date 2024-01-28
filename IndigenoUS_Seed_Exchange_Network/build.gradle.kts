@@ -8,7 +8,7 @@ group = "org.launchcode"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = '17'
 }
 
 repositories {
@@ -21,6 +21,9 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'mysql:mysql-connector-java:8.0.32')
+
 }
 
 tasks.withType<Test> {

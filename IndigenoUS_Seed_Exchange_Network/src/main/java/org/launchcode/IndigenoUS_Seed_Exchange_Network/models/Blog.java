@@ -1,14 +1,18 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-
+@Entity
 public class Blog {
-
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId;
+
 
 @NotBlank(message = "Must include title")
 @Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
@@ -21,19 +25,28 @@ private String author;
 private String content;
 private LocalDate time;
 
+private String imageFilePath;
+
     public Blog(){
-        this.id = nextId;
-        nextId++;
         this.time=LocalDate.now();
     }
 
-    public Blog(String title, String author, String content) {
+    public Blog(String title, String author, String content, String imageFilePath) {
         this();
         this.title = title;
         this.author = author;
         this.content = content;
+        this.imageFilePath = imageFilePath;
     }
-//think this is where error is
+
+    public String getImage() {
+        return imageFilePath;
+    }
+
+    public void setImage(String image) {
+        this.imageFilePath = image;
+    }
+
     public int getId() {
         return id;
     }
