@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<p><strong th:text="${title}"></strong> by <strong th:text="${author}"></strong></p>
+<p th:replace="fragments::navbar"></p>
+<p th:replace="blog::blog"></p>
 </body>
 </html>

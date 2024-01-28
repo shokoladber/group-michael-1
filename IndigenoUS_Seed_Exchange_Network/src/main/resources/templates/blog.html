@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <title th:text="${title}"></title>
 </head>
-<p th:replace= "fragments: :navbar"></p>
-<div th:if="${titles.size()} > 0">
-    <th:block th:each="title:${titles}">
-        <p><strong th:text="${title.key}"></strong> by <strong th:text="${title.value}"></strong></p>
+<p th:replace="fragments::navbar"></p>
+<div th:if="${blogs.size()} > 0">
+    <th:block th:each="blog:${blogs}">
+    <div th:fragment="blog">
+        <h1 th:text="${blog.title}"></h1>
+        <p th:text="${blog.author}"></p>
+        <p th:text="${blog.content}"></p>
+        <p th:text="${blog.time}"></p>
+    </div>
     </th:block>
 </div>
-<p th:unless="${titles.size()} > 0">No titles found.</p>
+<p th:unless="${blogs.size()} > 0">No titles found.</p>
 
 </body>
 </html>

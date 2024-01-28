@@ -5,13 +5,25 @@
     <title></title>
 </head>
 <body>
+<p th:replace="fragments::navbar"></p>
+<br/>
     <form method="post" >
         <label>Title:
             <input type="text" name="title">
         </label>
-        <label>Author
+
+        <label>Author:
             <input type="text" name="author">
         </label>
+<br/>
+<br/>
+
+        </label> Add Content
+        <br/>
+        <textarea name="content" cols="75" rows="50"></textarea>
+        </label>
+<br/>
+<br/>
         <input type="submit" value="Submit">
     </form>
 </body>
