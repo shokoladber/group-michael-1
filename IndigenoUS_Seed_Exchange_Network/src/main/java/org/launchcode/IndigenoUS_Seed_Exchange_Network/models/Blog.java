@@ -39,12 +39,12 @@ private String imageFilePath;
         this.imageFilePath = imageFilePath;
     }
 
-    public String getImage() {
+    public String getImageFilePath() {
         return imageFilePath;
     }
 
-    public void setImage(String image) {
-        this.imageFilePath = image;
+    public void setImage(String imageFilePath) {
+        this.imageFilePath = imageFilePath;
     }
 
     public int getId() {
