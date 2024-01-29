@@ -39,6 +39,13 @@ BlogRepository blogRepository;
         return "newPost";
         }
 
+ //   @GetMapping("/imageFilePath")
+ //   public String getListImages(Model model) {
+
+
+//        return "images";
+//    }
+
 @PostMapping("/new-post")
     public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors,@RequestParam("filename") MultipartFile file) throws IOException {
     StringBuilder fileNames = new StringBuilder();
