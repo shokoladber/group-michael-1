@@ -52,8 +52,8 @@ function UploadWidget() {
           // maxImageFileSize: 2000000,  //restrict file size to less than 2MB
           croppingAspectRatio: 1,
           showSkipCropButton: false,
-          maxImageHeight: 400,
-          maxImageWidth: 400, //Scales the image down to a width of 400 pixels before uploading
+          ImageHeight: 400,
+          ImageWidth: 400,
           // theme: "purple", //change to a purple theme
         },
         (error, result) => {
