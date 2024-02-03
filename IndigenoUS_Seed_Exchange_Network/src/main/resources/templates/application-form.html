@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Form</title>
+    <style>
+        .form-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            width: 150px; /* Adjust the width based on your preference */
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .form-group input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="container">
+
+<h2>Application Form</h2>
+
+<form th:action = "@{/application/submit}" method="post" th:object="${application}" style="max-width:600px;">
+
+    <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" th:field="*{fullName}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="affiliation">Affiliation:</label>
+        <input type="text" id="affiliation" name="affiliation" th:field="*{affiliation}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" th:field="*{position}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="introduction">Introduction:</label>
+        <textarea id="introduction" name="introduction" th:field="*{introduction}" class="form-control" rows="6" required></textarea>
+    </div>
+
+
+    <div class="form-group">
+        <label for="refName1">Reference 1 Name:</label>
+        <input type="text" id="refName1" name="refName1" th:field="*{reference1.name}" class="form-control" required>
+
+        <label for="refInstitution1">Institution:</label>
+        <input type="text" id="refInstitution1" name="refInstitution1" th:field="*{reference1.institution}" class="form-control" required>
+
+        <label for="refPosition1">Position:</label>
+        <input type="text" id="refPosition1" name="refPosition1" th:field="*{reference1.position}" class="form-control" required>
+
+        <label for="refEmail1">Email:</label>
+        <input type="email" id="refEmail1" name="refEmail1" th:field="*{reference1.email}" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="refName2">Reference 2 Name:</label>
+        <input type="text" id="refName2" name="refName2" th:field="*{reference2.name}" class="form-control" required>
+
+        <label for="refInstitution2">Institution:</label>
+        <input type="text" id="refInstitution2" name="refInstitution2" th:field="*{reference2.institution}" class="form-control" required>
+
+        <label for="refPosition2">Position:</label>
+        <input type="text" id="refPosition2" name="refPosition2" th:field="*{reference2.position}" class="form-control" required>
+
+        <label for="refEmail2">Email:</label>
+        <input type="email" id="refEmail2" name="refEmail2" th:field="*{reference2.email}" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>
+
+
+<div th:if="${successMessage}" class="alert alert-success" role="alert" style="max-width:600px;">
+    <p th:text="${successMessage}" class="form-control"></p>
+</div>
+
+</body>
+</html>
