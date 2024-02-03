@@ -9,7 +9,8 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 
-    sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_17
+
 
 }
 
@@ -19,6 +20,7 @@ repositories {
 
 
 dependencies {
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.security:spring-security-crypto:5.5.8")
@@ -29,8 +31,11 @@ dependencies {
     implementation ("com.h2database:h2")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+//Unit 2, Class 12 abt 17:00 dependency import tip
