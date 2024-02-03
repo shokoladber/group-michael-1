@@ -31,17 +31,17 @@ private String imageFilePath;
         this.time=LocalDate.now();
     }
 
-    public Blog(String title, String author, String content, String imageFilePath) {
+    public Blog(String title, String author, String content) {// String imageFilePath) {
         this();
         this.title = title;
         this.author = author;
         this.content = content;
-        this.imageFilePath = imageFilePath;
+     //   this.imageFilePath = imageFilePath;
     }
 
-    public String getImageFilePath() {
-        return imageFilePath;
-    }
+  //  public String getImageFilePath() {
+  //      return imageFilePath;
+  //  }
 
     public void setImage(String imageFilePath) {
         this.imageFilePath = imageFilePath;

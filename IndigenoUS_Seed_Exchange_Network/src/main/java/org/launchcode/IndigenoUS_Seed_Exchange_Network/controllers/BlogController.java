@@ -47,12 +47,12 @@ BlogRepository blogRepository;
 //    }
 
 @PostMapping("/new-post")
-    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors,@RequestParam("filename") MultipartFile file) throws IOException {
-    StringBuilder fileNames = new StringBuilder();
-    Path fileNameAndPath = Paths.get("./src/uploads", file.getOriginalFilename());
-    fileNames.append(file.getOriginalFilename());
-    Files.write(fileNameAndPath, file.getBytes());
-    blog.setImage(fileNameAndPath.toString());
+    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors){//,@RequestParam("filename") MultipartFile file) throws IOException {
+   // StringBuilder fileNames = new StringBuilder();
+//Path fileNameAndPath = Paths.get("./src/uploads", file.getOriginalFilename());
+//    fileNames.append(file.getOriginalFilename());
+ //   Files.write(fileNameAndPath, file.getBytes());
+//    blog.setImage(fileNameAndPath.toString());
     model.addAttribute("blog", blog);
     if(errors.hasErrors()){
         return "newPost";

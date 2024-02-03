@@ -9,7 +9,7 @@
     <th:block th:each="blog:${blogs}">
     <div th:fragment="blog">
         <h1 th:text="${blog.title}"></h1>
-        <img th:src="${blog.imageFilePath}"/>
+       <!-- <img th:src="${blog.imageFilePath}"/> -->
         <p th:text="${blog.author}"></p>
         <p th:text="${blog.content}"></p>
         <p th:text="${blog.time}"></p>
@@ -20,7 +20,7 @@
 
 </body>
 <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
-<footer>
+<!-- <footer>
     <div class="footer-container">
         <a class="link footer-left"></a>
         <div class="footer-icons">
@@ -42,6 +42,5 @@
             2024 &copy by Anxious Syntax Squad
         </p>
     </div>
-</footer>
-</html>
+</footer> -->
 </html>
