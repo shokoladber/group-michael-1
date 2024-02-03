@@ -1,4 +1,4 @@
-package org.launchcode;
+package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="demo:main" external.linked.project.path="$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network" external.root.project.path="$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network" external.system.id="GRADLE" external.system.module.group="org.launchcode" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="IndigenoUS_Seed_Exchange_Network:main" external.linked.project.path="$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network" external.root.project.path="$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network" external.system.id="GRADLE" external.system.module.group="org.launchcode" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/build/classes/java/main" />
     <exclude-output />
@@ -17,6 +17,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:8.0.28" level="project" />
     <orderEntry type="library" name="Gradle: com.h2database:h2:2.2.224" level="project" />
+    <orderEntry type="library" name="Gradle: jakarta.mail:jakarta.mail-api:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.orm:hibernate-core:6.4.1.Final" level="project" />

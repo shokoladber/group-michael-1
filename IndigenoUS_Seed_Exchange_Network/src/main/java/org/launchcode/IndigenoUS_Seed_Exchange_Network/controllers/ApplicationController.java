@@ -1,7 +1,8 @@
-package org.launchcode.controllers;
+package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
+
 
 import jakarta.validation.Valid;
-import org.launchcode.model.Application;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
