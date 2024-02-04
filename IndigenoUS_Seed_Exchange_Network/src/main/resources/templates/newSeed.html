@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:replace="fragments::navbar"<></p>
+
+    <form method="post">
+        <label>Name:
+            <input type="text" name="title">
+        </label>
+        <br/>
+        <label>Add Content:
+            <textarea name="content" cols="50" rows"10"></textarea>
+        </label>
+        <br/>
+        <label>How are you feeling?
+            <input type="text" name="status">
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
