@@ -26,7 +26,7 @@ dependencies {
 	implementation ("com.h2database:h2")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	implementation ("jakarta.mail:jakarta.mail-api:2.0.1")
+//	implementation ("jakarta.mail:jakarta.mail-api:2.0.1")
 
 }
 

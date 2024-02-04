@@ -41,8 +41,8 @@ public class ApplicationController {
     private void sendApplicationEmailToAdmin(Application application) {
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo("rtypien@gmail.com");
-
+        message.setTo("r.andereck@gmail.com");
+        message.setFrom("r.andereck@gmail.com");
         message.setSubject("New Application Form Submission");
         message.setText("A new application form has been submitted.\n\n"
                         + "Full Name: " + application.getFullName() + "\n"
