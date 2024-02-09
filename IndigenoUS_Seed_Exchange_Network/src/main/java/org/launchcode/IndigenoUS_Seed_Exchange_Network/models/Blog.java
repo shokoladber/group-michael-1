@@ -3,6 +3,7 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -25,7 +26,10 @@ private String author;
 private String content;
 private LocalDate time;
 
-private String imageFilePath;
+//private String imageFilePath;
+
+@ManyToOne
+private Admin admin;
 
     public Blog(){
         this.time=LocalDate.now();
@@ -43,9 +47,9 @@ private String imageFilePath;
   //      return imageFilePath;
   //  }
 
-    public void setImage(String imageFilePath) {
-        this.imageFilePath = imageFilePath;
-    }
+    //public void setImage(String imageFilePath) {
+    //    this.imageFilePath = imageFilePath;
+   // }
 
     public int getId() {
         return id;
