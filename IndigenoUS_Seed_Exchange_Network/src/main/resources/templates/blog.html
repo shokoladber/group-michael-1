@@ -5,6 +5,7 @@
     <title th:text="${title}"></title>
 </head>
 <p th:replace="fragments::navbar"></p>
+<center>
 <div th:if="${blogs.size()} > 0">
     <th:block th:each="blog:${blogs}">
     <div th:fragment="blog">
@@ -19,28 +20,33 @@
 <p th:unless="${blogs.size()} > 0">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
 
 </body>
-<!--<script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
- <footer>
+<footer>
+    <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
     <div class="footer-container">
         <a class="link footer-left"></a>
         <div class="footer-icons">
             <ul>
                 <a href="https://www.facebook.com"
-                    <i class="fa-brands fa-facebook"></i>>
+                <i class="fa-brands fa-facebook"</i>
                 </a>
 
                 <a href="https://www.instagram.com"
-                    <i class="fa-brands fa-instagram"></i>
-                ></a>
+                <i class="fa-brands fa-instagram"</i>
+                </a>
 
                 <a href="https://www.linkedin.com"
-                     <i class="fa-brands fa-linkedin"></i>
-                ></a>
+                <i class="fa-brands fa-linkedin"</i>
+                </a>
+
+                <a href="https://twitter.com/"
+                <i class="fa-brands fa-twitter"></i>
+                </a>
             </ul>
 
-    <div class="copyright">
-            2024 &copy by Anxious Syntax Squad
-        </p>
-    </div>
-</footer> -->
+            <div class="copyright">
+                2024 &copy by Anxious Syntax Squad
+                </p>
+            </div>
+</footer>
+</center>
 </html>

@@ -17,7 +17,6 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:8.0.28" level="project" />
     <orderEntry type="library" name="Gradle: com.h2database:h2:2.2.224" level="project" />
-    <orderEntry type="library" name="Gradle: jakarta.mail:jakarta.mail-api:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:3.2.2" level="project" />

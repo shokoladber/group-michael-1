@@ -22,7 +22,7 @@ import java.io.IOException;
 public class BlogController {
 @Autowired
 BlogRepository blogRepository;
-@GetMapping
+@GetMapping("/blog")
     public String blog(Model model) {
     Object attributeName;
     model.addAttribute("title", "ISEN Blog");
