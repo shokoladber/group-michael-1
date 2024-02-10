@@ -1,4 +1,7 @@
 package org.launchcode.demo.models.data;
 
-public interface PlantHardinessZoneRepository {
+import org.launchcode.demo.models.PlantHardinessZone;
+import org.springframework.data.repository.CrudRepository;
+
+public interface PlantHardinessZoneRepository extends CrudRepository<PlantHardinessZone, Integer> {
 }

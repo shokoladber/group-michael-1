@@ -1,4 +1,7 @@
 package org.launchcode.demo.models.data;
 
-public interface SeedSourceRepository {
+import org.launchcode.demo.models.Seed;
+import org.springframework.data.repository.CrudRepository;
+
+public interface SeedSourceRepository extends CrudRepository<Seed, Integer> {
 }
