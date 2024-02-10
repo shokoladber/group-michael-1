@@ -1,7 +1,8 @@
-package org.launchcode.controllers;
+package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
+
 
 import jakarta.validation.Valid;
-import org.launchcode.model.Application;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -40,8 +41,8 @@ public class ApplicationController {
     private void sendApplicationEmailToAdmin(Application application) {
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo("rtypien@gmail.com");
-
+        message.setTo("r.andereck@gmail.com");
+        message.setFrom("r.andereck@gmail.com");
         message.setSubject("New Application Form Submission");
         message.setText("A new application form has been submitted.\n\n"
                         + "Full Name: " + application.getFullName() + "\n"

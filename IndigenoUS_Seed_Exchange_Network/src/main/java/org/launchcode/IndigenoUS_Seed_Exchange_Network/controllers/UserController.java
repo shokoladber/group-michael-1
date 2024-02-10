@@ -1,8 +1,8 @@
-package org.launchcode.controllers;
+package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
 import jakarta.validation.Valid;
-import org.launchcode.model.User;
-import org.launchcode.model.data.UserRepository;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.ProfessionalReference;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,16 +21,16 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLoginForm (Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new ProfessionalReference.User());
         return "login";
     }
 
     @PostMapping("/login")
-    public String processLogin(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+    public String processLogin(@ModelAttribute @Valid ProfessionalReference.User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "login";
         }
-        Optional<User> storedUser = userRepository.findByEmail(user.getEmail());
+        Optional<ProfessionalReference.User> storedUser = userRepository.findByEmail(user.getEmail());
 
         if (storedUser.isPresent() && storedUser.get().getPassword().equals(user.getPassword())){
             return "redirect:/home";

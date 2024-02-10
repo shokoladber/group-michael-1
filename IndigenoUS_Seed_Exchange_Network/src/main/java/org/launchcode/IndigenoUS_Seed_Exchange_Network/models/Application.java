@@ -1,5 +1,7 @@
-package org.launchcode.model;
+package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
+
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.ProfessionalReference;
 
 public class Application {
 

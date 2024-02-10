@@ -1,10 +1,10 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.data;
 
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Admin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BlogRepository extends CrudRepository<Blog, Integer> {
+public interface AdminRepository extends CrudRepository<Admin, Integer> {
 
 }

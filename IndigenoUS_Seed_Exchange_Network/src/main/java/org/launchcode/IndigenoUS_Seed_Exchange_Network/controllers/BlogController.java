@@ -1,6 +1,7 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
 import jakarta.validation.Valid;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.AdminRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogData;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
@@ -22,7 +23,10 @@ import java.io.IOException;
 public class BlogController {
 @Autowired
 BlogRepository blogRepository;
-@GetMapping
+@Autowired
+AdminRepository adminRepository;
+
+@GetMapping("/blog")
     public String blog(Model model) {
     Object attributeName;
     model.addAttribute("title", "ISEN Blog");
@@ -54,6 +58,7 @@ BlogRepository blogRepository;
  //   Files.write(fileNameAndPath, file.getBytes());
 //    blog.setImage(fileNameAndPath.toString());
     model.addAttribute("blog", blog);
+    //model.addAttribute("admins", adminRepository.findAll());
     if(errors.hasErrors()){
         return "newPost";
     }
