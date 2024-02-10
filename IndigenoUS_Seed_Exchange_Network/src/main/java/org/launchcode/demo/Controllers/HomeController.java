@@ -1,6 +1,8 @@
 package org.launchcode.demo.controllers;
 
 import jakarta.validation.Valid;
+import org.launchcode.demo.models.BotanicalName;
+import org.launchcode.demo.models.CommonName;
 import org.launchcode.demo.models.Seed;
 import org.launchcode.demo.models.data.BotanicalNameRepository;
 import org.launchcode.demo.models.data.CommonNameRepository;
@@ -9,7 +11,6 @@ import org.launchcode.demo.models.data.PlantHardinessZoneRepository;
 import org.launchcode.demo.models.data.SeedQuantityRepository;
 import org.launchcode.demo.models.data.SeedRepository;
 import org.launchcode.demo.models.data.SeedSourceRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,7 +60,7 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
-                                    Errors errors, Model model, @RequestParam int seedId, @RequestParam List<Integer> seedQuantity) {
+                                    Errors errors, Model model, @RequestParam int botanicalNameId, @RequestParam List<Integer> commonNames) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Seed");
@@ -68,9 +69,9 @@ public class HomeController {
         BotanicalName botanicalName = botanicalNameRepository.findById(botanicalNameId).orElse(new BotanicalName());
         newSeed.setBotanicalName(botanicalName);
 
-        List<SeedQuantity> seedQuantityObjs = (List<seedQuantity>) seedQuantityRepository.findAllById(seedQuantity);
-        newSeed.setSeedQuanity(seedQuantityObjs);
-        seedQuantityRepository.save(newSeed);
+        List<CommonName> commonNameObjs = (List<CommonName>) commonNameRepository.findAllById(commonNames);
+        newSeed.setCommonNames(commonNameObjs);
+        seedRepository.save(newSeed);
 
         return "redirect:";
     }
