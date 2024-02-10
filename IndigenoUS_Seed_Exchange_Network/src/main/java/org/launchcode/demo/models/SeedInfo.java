@@ -35,7 +35,7 @@ public abstract class SeedInfo {
         return Objects.hash(id);
     }
 
-    // Getters and setters.
+
     public int getId() {
         return id;
     }

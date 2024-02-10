@@ -79,6 +79,14 @@ public class Seed {
             return output;
         }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Seed)) return false;
+        Seed seed = (Seed) o;
+        return id == seed.id;
+    }
+
 
     public int getId() {
         return id;

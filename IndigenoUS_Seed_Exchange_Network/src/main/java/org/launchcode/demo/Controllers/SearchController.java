@@ -1,6 +1,7 @@
 package org.launchcode.demo.controllers;
 
-import org.launchcode.demo.data.SeedData;
+import org.launchcode.demo.models.Seed;
+import org.launchcode.demo.models.SeedData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
+import static org.launchcode.demo.controllers.ListController.columnChoices;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 @RequestMapping("search")
