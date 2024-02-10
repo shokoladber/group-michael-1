@@ -28,8 +28,8 @@ private LocalDate time;
 
 //private String imageFilePath;
 
-@ManyToOne
-private Admin admin;
+//@ManyToOne
+//private Admin admin;
 
     public Blog(){
         this.time=LocalDate.now();
@@ -82,4 +82,12 @@ private Admin admin;
     public LocalDate getTime() {
         return time;
     }
+
+    //public Admin getAdmin() {
+   //     return admin;
+   // }
+
+  //  public void setAdmin(Admin admin) {
+  //      this.admin = admin;
+ //   }
 }
