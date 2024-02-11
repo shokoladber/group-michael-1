@@ -6,6 +6,8 @@ import org.launchcode.demo.models.data.SeedRepository;
 import org.launchcode.demo.models.data.BotanicalNameRepository;
 import org.launchcode.demo.models.data.CommonNameRepository;
 import org.launchcode.demo.models.data.EndangeredStatusRepository;
+import org.launchcode.demo.models.data.PlantHardinessZoneRepository;
+import org.launchcode.demo.models.data.SeedQuantityRepository;
 import org.launchcode.demo.models.data.SeedSourceRepository;
 import org.launchcode.demo.models.Seed;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,10 @@ public class ListController {
     @Autowired
     private EndangeredStatusRepository endangeredStatusRepository;
     @Autowired
-    private PlantHardinessZone plantHardinessZone;
+    private PlantHardinessZoneRepository plantHardinessZoneRepository;
+
+    @Autowired
+    private SeedQuantityRepository seedQuantityRepository;
     @Autowired
     private SeedSourceRepository seedSourceRepository;
 
@@ -39,12 +44,21 @@ public class ListController {
         columnChoices.put("all", "All");
         columnChoices.put("botanicalName", "BotanicalName");
         columnChoices.put("commonName", "CommonName");
+        columnChoices.put("endangeredStatus", "EndangeredStatus");
+        columnChoices.put("plantHardinessZone", "PlantHardinessZone");
+        columnChoices.put("seedQuantity", "SeedQuantity");
+        columnChoices.put("seedSource", "SeedSource");
+
     }
 
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("botanicalNames", botanicalNameRepository.findAll());
         model.addAttribute("commonNames", commonNameRepository.findAll());
+        model.addAttribute("endangeredStatus", endangeredStatusRepository.findAll());
+        model.addAttribute("plantHardinessZone", plantHardinessZoneRepository.findAll());
+        model.addAttribute("seedQuantity", seedQuantityRepository.findAll());
+        model.addAttribute("seedSource", seedSourceRepository.findAll());
         return "list";
     }
 

@@ -10,32 +10,6 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <form th:action="@{/search/results}" method = "post">
-        <h2>Search by:</h2>
-
-        <p>
-            <span th:each="column : ${columns}">
-                <input
-                        type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
-                <label th:for="${column.key}" th:text="${column.value}"></label>
-            </span>
-
-        </p>
-
-        <p>
-            <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
-        </p>
-
-        <input type="submit" value="Search" />
-    </form>
-
-    <hr />
-
     <table class="seed-listing">
         <tr th:each="seed : ${seeds}">
             <td>
@@ -50,13 +24,12 @@
                 </p>
                 <p>
                     Common Name:
-                <ul th:each="commonName : ${seed.commonNames}">
+                <ul th:each="skill : ${seed.commonName}">
                     <li>
                         <a th:href="@{'/commonNames/view/' + ${commonName.id}}" th:text="${commonName.name}"></a>
                     </li>
                 </ul>
                 </p>
-
             </td>
         </tr>
     </table>

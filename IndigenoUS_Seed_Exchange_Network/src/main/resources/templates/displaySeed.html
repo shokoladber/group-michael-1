@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://wwww.thymelead.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
 </head>
 <body>
-    <p th:replace="fragments::navbar"></p>
-    <h1 th:text="${seed.title}"></h1>
-    <p th:text="${seed.content}"></p>
-    <p th:text="${seed.time}"></p>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<div class="container body-content">
+    <h2>IndigenoUS Seed Exchange Network</h2>
+    <ul>
+        <li th:each="seed : ${seeds}">
+            <a th:href="@{'/view/' + ${seed.id}}" th:text="${seed.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
 </body>
 </html>

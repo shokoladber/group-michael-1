@@ -40,9 +40,9 @@ public class HomeController {
     private SeedSourceRepository seedSourceRepository;
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String displaySeed(Model model) {
         model.addAttribute("seeds", seedRepository.findAll());
-        return "index";
+        return "displaySeed";
     }
 
     @GetMapping("add")

@@ -23,9 +23,9 @@ public class BotanicalNameController {
     private static List<String> botanicalNames = new ArrayList<>();
 
     @GetMapping ("/")
-    public String index(Model model) {
+    public String displaySeed(Model model) {
         model.addAttribute("botanicalNames", botanicalNameRepository.findAll());
-        return "index";
+        return "displaySeed";
     }
 
     @GetMapping("add")
