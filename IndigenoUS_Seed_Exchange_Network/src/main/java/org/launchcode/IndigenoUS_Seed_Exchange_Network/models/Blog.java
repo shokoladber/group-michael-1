@@ -7,7 +7,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+
 import java.time.LocalDate;
+
 @Entity
 public class Blog {
     @Id

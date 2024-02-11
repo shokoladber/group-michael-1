@@ -9,6 +9,7 @@
 <p th:replace="fragments::navbar"></p>
 <center>
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
+
 <div th:if="${blogs.size()} > 0">
     <th:block th:each="blog:${blogs}">
     <div th:fragment="blog">

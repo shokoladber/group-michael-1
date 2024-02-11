@@ -36,11 +36,9 @@ AdminRepository adminRepository;
     }
 
     @GetMapping("/edit/{id}")
-    public String editForm(Model model, @PathVariable int id) {
-
-        Blog blog = null;
-        Optional optBlog = blogRepository.findById(id);
-        if (!optBlog.isEmpty()) {
+    public String editForm(Model model, Blog blog, @PathVariable int id) {
+    Optional optBlog = blogRepository.findById(id);
+        if (optBlog.isPresent()) {
             blog = (Blog) optBlog.get();
             model.addAttribute("blog", blog);
             return "edit";
@@ -49,19 +47,29 @@ AdminRepository adminRepository;
         }
     }
 
-    @PostMapping("/edit/")
-public String submitEditForm(@ModelAttribute Blog blog, Model model, Errors errors) {
-        model.addAttribute("blog", blog);
+    @PostMapping("/edit/{id}")
+    public String updateExistingPost(Model model, @PathVariable int id, Blog blog) {
 
-        if(errors.hasErrors()){
+        Optional<Blog> optBlog = blogRepository.findById(id);
+        if (optBlog.isPresent()) {
+            Blog existingBlog = optBlog.get();
+            // Update the existing blog with the new data
+            existingBlog.setTitle(blog.getTitle());
+            existingBlog.setAuthor(blog.getAuthor());
+            existingBlog.setContent(blog.getContent());
+            // Save the updated blog
+            blogRepository.save(existingBlog);
+            model.addAttribute("blogs", blogRepository.findAll());
+            return "blog";
+        } else {
             return "404";
         }
-
-        blogRepository.save(blog);
-    return "blog";
     }
 
-@GetMapping("/new-post")
+  //  @GetMapping("/delete/{id}")
+
+
+    @GetMapping("/new-post")
     public String newPostForm(Model model){
     model.addAttribute("blog", new Blog());
 

@@ -12,12 +12,14 @@
 
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
 
-    <form th:action="@{'/edit/'}" th:object="${blog}" method="post">
+    <form th:action="@{'/edit/' + ${blog.id}}" th:object="${blog}" method="POST">
     <div th:if="${blog}">
             <div th:fragment="blog">
                 <h2> <a th:href="@{'/edit/' + ${blog.id}}"
                         th:text="${blog.title}">Title</a>
                 </h2>
+                <p>Title</p>
+                <p> <input type="text" name="Title" th:field="*{title}"/></p>
                 <!-- <img th:src="${blog.imageFilePath}"/> -->
                 <p>Author</p>
                 <p> <input type="text" name="Author" th:field="*{author}"/></p>
