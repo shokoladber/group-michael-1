@@ -6,18 +6,17 @@ import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogData;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 public class BlogController {
@@ -34,6 +33,32 @@ AdminRepository adminRepository;
 
         return "blog";
 
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editForm(Model model, @PathVariable int id) {
+
+        Blog blog = null;
+        Optional optBlog = blogRepository.findById(id);
+        if (!optBlog.isEmpty()) {
+            blog = (Blog) optBlog.get();
+            model.addAttribute("blog", blog);
+            return "edit";
+        } else {
+            return "404";
+        }
+    }
+
+    @PostMapping("/edit/")
+public String submitEditForm(@ModelAttribute Blog blog, Model model, Errors errors) {
+        model.addAttribute("blog", blog);
+
+        if(errors.hasErrors()){
+            return "404";
+        }
+
+        blogRepository.save(blog);
+    return "blog";
     }
 
 @GetMapping("/new-post")

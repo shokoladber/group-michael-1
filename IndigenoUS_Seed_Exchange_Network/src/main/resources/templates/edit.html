@@ -5,25 +5,32 @@
 
     <title th:text="${title}"></title>
 </head>
+
+<center>
 <body>
 <p th:replace="fragments::navbar"></p>
-<center>
+
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
-    <div th:if="${blogs.size()} > 0">
-        <th:block th:each="blog:${blogs}">
+
+    <form th:action="@{'/edit/'}" th:object="${blog}" method="post">
+    <div th:if="${blog}">
             <div th:fragment="blog">
-                <h2>
-                    <p    th:text="${blog.title}" ></p>
+                <h2> <a th:href="@{'/edit/' + ${blog.id}}"
+                        th:text="${blog.title}">Title</a>
                 </h2>
                 <!-- <img th:src="${blog.imageFilePath}"/> -->
-                <p th:text="${blog.author}"></p>
-                <p th:text="${blog.content}"></p>
+                <p>Author</p>
+                <p> <input type="text" name="Author" th:field="*{author}"/></p>
+                <p>Content</p>
+                <p> <input type="text" name="Content" th:field="*{content}"/></p>
                 <p th:text="${blog.time}"></p>
-            </div>
-        </th:block>
-    </div>
-    <p th:unless="${blogs.size()} > 0">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
 
+            </div>
+
+        <input type="submit" value="Submit">
+    </div>
+    <p th:unless="${blog}">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
+    </form>
 </body>
 <footer>
     <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
