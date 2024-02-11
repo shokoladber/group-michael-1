@@ -19,7 +19,7 @@ public BotanicalName() {}
 private List<Seed> seeds=new ArrayList<>();
 
 @NotBlank(message = "Botanical name is required")
-@Size(min = 1, max = 100, message = "The botanical name must be between 1 and 100 characters")
+@Size(min = 1, max = 50, message = "The botanical name must be between 1 and 50 characters")
 public String botanicalName;
 
 public String getBotanicalName(){return botanicalName;}
