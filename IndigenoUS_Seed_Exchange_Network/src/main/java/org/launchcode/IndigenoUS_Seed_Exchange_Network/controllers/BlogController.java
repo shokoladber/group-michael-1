@@ -95,29 +95,19 @@ AdminRepository adminRepository;
         return "newPost";
         }
 
- //   @GetMapping("/imageFilePath")
- //   public String getListImages(Model model) {
 
 
-//        return "images";
-//    }
+    @PostMapping("/new-post")
+    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors){
+        model.addAttribute("blog", blog);
+        if(errors.hasErrors()){
+            return "newPost";
+        }
 
-@PostMapping("/new-post")
-    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors){//,@RequestParam("filename") MultipartFile file) throws IOException {
-   // StringBuilder fileNames = new StringBuilder();
-//Path fileNameAndPath = Paths.get("./src/uploads", file.getOriginalFilename());
-//    fileNames.append(file.getOriginalFilename());
- //   Files.write(fileNameAndPath, file.getBytes());
-//    blog.setImage(fileNameAndPath.toString());
-    model.addAttribute("blog", blog);
-    //model.addAttribute("admins", adminRepository.findAll());
-    if(errors.hasErrors()){
-        return "newPost";
+        blogRepository.save(blog);
+        model.addAttribute("blogs", blogRepository.findAll());
+        return "blog";
     }
-
- blogRepository.save(blog);
-    return "displayPost";
-}
 }
 
 //push

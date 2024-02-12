@@ -11,7 +11,7 @@
 <p th:replace="fragments::navbar"></p>
 
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
-
+<!-- check your slashes, check your single ticks, has to be in order, wake up eyeballs mcgee -->
     <form th:action="@{'/blog/' + ${blog.id}} + '/edit'" th:object="${blog}" method="POST">
     <div th:if="${blog}">
             <div th:fragment="blog">
