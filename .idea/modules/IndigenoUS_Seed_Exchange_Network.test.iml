@@ -6,6 +6,9 @@
     <content url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/src/test/java" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/src/test/java" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="IndigenoUS_Seed_Exchange_Network.main" />

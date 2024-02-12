@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+</head>
+<body>
+<div th:fragment="adminContent">
+
+
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/admin/allUsers">All Users</a>
+        <a href="/admin/addUser">Add User</a>
+    </div>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Affiliation</th>
+            <th>Position</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.phoneNumber}"></td>
+            <td th:text="${user.affiliation}"></td>
+            <td th:text="${user.position}"></td>
+            <td><a th:href="@{'/admin/users/' + ${user.id} + '/edit'}">Edit</a></td>
+            <form th:action="@{'/admin/users/' + ${user.id} + '/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <form th:object="${user}" method="post" th:action="@{/admin/addUser}" class="user-form">
+        <input type="text" th:field="*{name}" title="Enter user's full name"><br>
+        <input type="email" th:field="*{email}" title="Enter user's email"><br>
+        <input type="text" th:field="*{phoneNumber}" title="Enter user's phone number"><br>
+        <input type="text" th:field="*{affiliation}" title="Enter user's affiliation"><br>
+        <input type="text" th:field="*{position}" title="Enter user's position"><br>
+        <button type="submit">Add User</button>
+    </form>
+</div>
+</body>
+
+
