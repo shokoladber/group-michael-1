@@ -13,7 +13,7 @@
 <div th:if="${blogs.size()} > 0">
     <th:block th:each="blog:${blogs}">
     <div th:fragment="blog">
-        <h2> <a th:href="@{'/edit/' + ${blog.id}}"
+        <h2> <a th:href="@{'/singleblog/' + ${blog.id}}"
                 th:text="${blog.title}">Title</a>
         </h2>
        <!-- <img th:src="${blog.imageFilePath}"/> -->

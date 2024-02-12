@@ -35,38 +35,57 @@ AdminRepository adminRepository;
 
     }
 
-    @GetMapping("/edit/{id}")
-    public String editForm(Model model, Blog blog, @PathVariable int id) {
-    Optional optBlog = blogRepository.findById(id);
+    @GetMapping("singleblog/{id}")
+    public String getSingleBlog(Model model, Blog blog, @PathVariable int id) {
+        Optional optBlog = blogRepository.findById(id);
         if (optBlog.isPresent()) {
             blog = (Blog) optBlog.get();
             model.addAttribute("blog", blog);
-            return "edit";
+            return "singleblog";
         } else {
             return "404";
         }
     }
 
-    @PostMapping("/edit/{id}")
-    public String updateExistingPost(Model model, @PathVariable int id, Blog blog) {
+       @GetMapping("/blog/{id}/edit")
+       public String editForm(Model model, Blog blog, @PathVariable int id) {
+       Optional optBlog = blogRepository.findById(id);
+           if (optBlog.isPresent()) {
+               blog = (Blog) optBlog.get();
+               model.addAttribute("blog", blog);
+               return "edit";
+           } else {
+               return "404";
+           }
+       }
 
-        Optional<Blog> optBlog = blogRepository.findById(id);
-        if (optBlog.isPresent()) {
-            Blog existingBlog = optBlog.get();
-            // Update the existing blog with the new data
-            existingBlog.setTitle(blog.getTitle());
-            existingBlog.setAuthor(blog.getAuthor());
-            existingBlog.setContent(blog.getContent());
-            // Save the updated blog
-            blogRepository.save(existingBlog);
-            model.addAttribute("blogs", blogRepository.findAll());
-            return "blog";
-        } else {
-            return "404";
-        }
-    }
+      @PostMapping("/blog/{id}/edit")
+       public String updateExistingBlog(Model model, @PathVariable int id, Blog blog) {
 
-  //  @GetMapping("/delete/{id}")
+           Optional<Blog> optBlog = blogRepository.findById(id);
+           if (optBlog.isPresent()) {
+               Blog existingBlog = optBlog.get();
+               // Update the existing blog with the new data
+               existingBlog.setTitle(blog.getTitle());
+               existingBlog.setAuthor(blog.getAuthor());
+               existingBlog.setContent(blog.getContent());
+               // Save the updated blog
+               blogRepository.save(existingBlog);
+               model.addAttribute("blogs", blogRepository.findAll());
+               return "blog";
+           } else {
+               return "404";
+           }
+       }
+
+       @GetMapping("/blog/{id}/delete")
+       public String deleteByPostById(@PathVariable int id) {
+           blogRepository.deleteById(id);
+
+               return "delete";
+           }
+
+
 
 
     @GetMapping("/new-post")
