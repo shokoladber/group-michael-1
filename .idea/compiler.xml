@@ -2,15 +2,20 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
+      <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="demo" target="17" />
+      <module name="demo.main" target="17" />
+      <module name="demo.test" target="17" />
       <module name="IndigenoUS-Seed-Exchange-Network" target="1.7" />
       <module name="IndigenoUS-Seed-Network-Exchange" target="1.7" />
+      <module name="IndigenoUS_Seed_Exchange_Network" target="17" />
+      <module name="IndigenoUS_Seed_Exchange_Network.main" target="17" />
+      <module name="IndigenoUS_Seed_Exchange_Network.test" target="17" />
+      <module name="IndigenoUS_Seed_Network_Exchange" target="17" />
+      <module name="IndigenoUS_Seed_Network_Exchange.main" target="17" />
+      <module name="IndigenoUS_Seed_Network_Exchange.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

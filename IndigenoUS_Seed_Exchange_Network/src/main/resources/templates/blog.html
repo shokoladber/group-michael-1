@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+
+    <title th:text="${title}"></title>
+</head>
+<body>
+<p th:replace="fragments::navbar"></p>
+<center>
+    <h1> IndigenoUS Seed Exchange Network Blog </h1>
+
+<div th:if="${blogs.size()} > 0">
+    <th:block th:each="blog:${blogs}">
+    <div th:fragment="blog">
+        <h2> <a th:href="@{'/singleblog/' + ${blog.id}}"
+                th:text="${blog.title}">Title</a>
+        </h2>
+
+        <p th:text="${blog.author}"></p>
+        <p th:text="${blog.content}"></p>
+        <p th:text="${blog.time}"></p>
+
+    </div>
+    </th:block>
+</div>
+<p th:unless="${blogs.size()} > 0">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
+
+<div>
+    <a th:href="@{'/new-post'}" >New Post</a>
+</div>
+
+</body>
+<footer>
+    <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
+    <div class="footer-container">
+        <a class="link footer-left"></a>
+        <div class="footer-icons">
+            <ul>
+                <a href="https://www.facebook.com"
+                <i class="fa-brands fa-facebook"</i>
+                </a>
+
+                <a href="https://www.instagram.com"
+                <i class="fa-brands fa-instagram"</i>
+                </a>
+
+                <a href="https://www.linkedin.com"
+                <i class="fa-brands fa-linkedin"</i>
+                </a>
+
+                <a href="https://twitter.com/"
+                <i class="fa-brands fa-twitter"></i>
+                </a>
+            </ul>
+
+            <div class="copyright">
+                2024 &copy by Anxious Syntax Squad
+                </p>
+            </div>
+</footer>
+</center>
+</html>

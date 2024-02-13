@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<p th:replace="fragments::navbar"></p>
+<form method = 'post' th:action="@{/admin}">
+    <label>
+        Username:
+        <input type = 'text' name = 'adminname' th:value="${adminname}">
+    </label>
+
+    <p th:text="${error}"></p>
+
+    <input type = 'submit' value = 'Submit'>
+
+
+</form>
+</body>
+</html>
