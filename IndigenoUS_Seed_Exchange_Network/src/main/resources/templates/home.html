@@ -2,16 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
     <title>IdigenoUS Seed Exchange Network</title>
 </head>
 <body>
-<p th:replace="fragments::navbar"></p>
+<div class="container">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Indigenous Seed Exchange Network</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/application">Application</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--<p th:replace="fragments::navbar"></p> -->
 <center>
-<h1> IndigenoUS Seed Exchange Network </h1>
+    <h1> IndigenoUS Seed Exchange Network </h1>
 
-<section> Building Bridges Across Indigenous Communities, Empowering Indigenous Exchange and Collaboration, Strengthening Indigenous Networks for Cultural Preservation </section>
+    <section> Building Bridges Across Indigenous Communities, Empowering Indigenous Exchange and Collaboration, Strengthening Indigenous Networks for Cultural Preservation </section>
 
-<img src="https://www.oxdxclothing.com/cdn/shop/products/FUTURE_ART_PRINT_MOCK_720x.jpg?v=1672349205" alt="Future is Indigenous">
+    <img src="https://www.oxdxclothing.com/cdn/shop/products/FUTURE_ART_PRINT_MOCK_720x.jpg?v=1672349205" alt="Future is Indigenous">
     <section>Demand to have some of whatever the human is cooking, then sniff the offering and walk away play with twist ties
         Please stop looking at your phone and pet me mesmerizing birds. All of a sudden cat goes crazy poop on couch suddenly go on wild-eyed crazy rampage
         find something else more interesting, but scratch me now! stop scratching me! human is in bath tub, emergency! drowning! meooowww! let me in let me out let me
@@ -51,14 +76,17 @@
         <img src="https://pbs.twimg.com/media/FLGdhcEWQAML-XB?format=jpg&name=900x900" alt="Cat blur corn" width="200" height="200">
 
     </p>
-
+    </div>
+</center>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 <footer>
+    <h4 style="color: white; font-size: 12px">
     <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
-    <div class="footer-container">
-        <a class="link footer-left"></a>
-        <div class="footer-icons">
-            <ul>
+        <p class="copyright">© Anxious Syntax Squad 2024
+            <span class="social">
+
                 <a href="https://www.facebook.com"
                 <i class="fa-brands fa-facebook"</i>
                 </a>
@@ -74,12 +102,10 @@
                 <a href="https://twitter.com/"
                 <i class="fa-brands fa-twitter"></i>
                 </a>
-            </ul>
 
-    <div class="copyright">
-            2024 &copy by Anxious Syntax Squad
+          </span>
         </p>
-    </div>
+
 </footer>
-</center>
+
 </html>

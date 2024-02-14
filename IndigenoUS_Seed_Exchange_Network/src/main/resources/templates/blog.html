@@ -10,25 +10,25 @@
 <center>
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
 
-<div th:if="${blogs.size()} > 0">
-    <th:block th:each="blog:${blogs}">
-    <div th:fragment="blog">
-        <h2> <a th:href="@{'/singleblog/' + ${blog.id}}"
-                th:text="${blog.title}">Title</a>
-        </h2>
+    <div th:if="${blogs.size()} > 0">
+        <th:block th:each="blog:${blogs}">
+            <div th:fragment="blog">
+                <h2> <a th:href="@{'/singleblog/' + ${blog.id}}"
+                        th:text="${blog.title}">Title</a>
+                </h2>
 
-        <p th:text="${blog.author}"></p>
-        <p th:text="${blog.content}"></p>
-        <p th:text="${blog.time}"></p>
+                <p th:text="${blog.author}"></p>
+                <p th:text="${blog.content}"></p>
+                <p th:text="${blog.time}"></p>
 
+            </div>
+        </th:block>
     </div>
-    </th:block>
-</div>
-<p th:unless="${blogs.size()} > 0">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
+    <p th:unless="${blogs.size()} > 0">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
 
-<div>
-    <a th:href="@{'/new-post'}" >New Post</a>
-</div>
+    <div>
+        <a th:href="@{'/new-post'}" >New Post</a>
+    </div>
 
 </body>
 <footer>

@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8" />
@@ -7,42 +7,41 @@
 </head>
 
 <center>
-<body>
-<p th:replace="fragments::navbar"></p>
+    <body>
+    <p th:replace="fragments::navbar"></p>
 
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
-<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=65c699b8088410001972804f&product=inline-share-buttons&source=platform" async="async"></script>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=65c699b8088410001972804f&product=inline-share-buttons&source=platform" async="async"></script>
 
     <form th:action="@{'/blog/' + ${blog.id}}" th:object="${blog}" method="POST">
-    <div th:if="${blog}">
+        <div th:if="${blog}">
             <div th:fragment="blog">
                 <h2>
-                      <p  th:text="${blog.title}">Title</p>
+                    <p  th:text="${blog.title}">Title</p>
                 </h2>
 
-<!-- <img th:src="${blog.imageFilePath}"/> -->
+                <!-- <img th:src="${blog.imageFilePath}"/> -->
                 <p th:text="${blog.author}"></p>
                 <p th:text="${blog.content}"></p>
                 <p th:text="${blog.time}"></p>
 
 
-     </div>
- <a th:href="@{'/blog/' + ${blog.id} + '/edit'}" >Edit</a>
- <a th:href="@{'/blog/' + ${blog.id} + '/delete'}" >Delete</a>
+            </div>
+            <a th:href="@{'/blog/' + ${blog.id} + '/edit'}" >Edit</a>
+            <a th:href="@{'/blog/' + ${blog.id} + '/delete'}" >Delete</a>
 
-</div>
-<p th:unless="${blog}">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
-</form>
-</body>
+        </div>
+        <p th:unless="${blog}">No blogs found! (╯°□°）╯︵ ┻━┻ </p>
+    </form>
+    </body>
     <br/>
     <footer>
-    <div class="sharethis-inline-share-buttons"></div>
-     <div class="copyright">
-         <br/>
-         2024 &copy by Anxious Syntax Squad
-         </p>
-     </div>
-</footer>
+        <div class="sharethis-inline-share-buttons"></div>
+        <div class="copyright">
+            <br/>
+            2024 &copy by Anxious Syntax Squad
+            </p>
+        </div>
+    </footer>
 </center>
 </html>
-
