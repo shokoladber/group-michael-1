@@ -32,22 +32,23 @@ public class SeedData {
         String theValue;
         if (fieldName.equals("name")){
             theValue = seed.getName();
-        } else if (fieldName.equals("seed")){
+        } else if (fieldName.equals("botanicalName")){
             theValue = seed.getBotanicalName().toString();
-        } else {
+        } else if (fieldName.equals("commonName")){
             theValue = seed.getCommonNames().toString();
-        }
+        } else if (fieldName.equals("endangeredStatus")){
+            theValue = seed.getEndangeredStatuses().toString();
+        } else if (fieldName.equals("plantHardinessZone")){
+            theValue = seed.getPlantHardinessZones().toString();
+        } else if (fieldName.equals("seedQuantity")){
+            theValue = seed.getSeedQuantities().toString();
+        } else {
+        theValue = seed.getSeedSources().toString();
+    }
 
         return theValue;
     }
 
-    /**
-     * Search all Job fields for the given term.
-     *
-     * @param value The search term to look for.
-     * @param allSeeds The list of jobs to search.
-     * @return      List of all jobs with at least one field containing the value.
-     */
     public static ArrayList<Seed> findByValue(String value, Iterable<Seed> allSeeds) {
 
 
@@ -61,8 +62,15 @@ public class SeedData {
                 results.add(seed);
             } else if (seed.getCommonNames().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
+            } else if (seed.getEndangeredStatuses().toString().toLowerCase().contains(value.toLowerCase())) {
+                results.add(seed);
+            }else if (seed.getPlantHardinessZones().toString().toLowerCase().contains(value.toLowerCase())) {
+                results.add(seed);
+            }else if (seed.getSeedQuantities().toString().toLowerCase().contains(value.toLowerCase())) {
+                results.add(seed);
+            }else if (seed.getSeedSources().toString().toLowerCase().contains(value.toLowerCase())) {
+                results.add(seed);
             }
-
         }
 
         return results;

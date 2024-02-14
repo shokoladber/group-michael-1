@@ -39,30 +39,4 @@ public class SearchController {
 
         return "search";
     }
-
-
-//    private SeedData seedData = new SeedData();
-//    @GetMapping (value = "")
-//    public String search(Model model) {
-//        model.addAttribute("columns", columnChoices);
-//        return "search";
-//    }
-//    @PostMapping ("/results")
-//    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
-//
-//        List<Seed> searchResults;
-//
-//        if ((searchTerm == "all".toLowerCase()) || searchTerm == "") {
-//            searchResults = SeedData.findAll();
-//        } else {
-//            searchResults = SeedData.findByColumnAndValue(searchType, searchTerm);
-//        }
-//
-//        model.addAttribute("searchType", searchType);
-//        model.addAttribute("searchTerm", searchTerm);
-//        model.addAttribute("seeds", searchResults);
-//
-//
-//        return "search";
-//    }
 }

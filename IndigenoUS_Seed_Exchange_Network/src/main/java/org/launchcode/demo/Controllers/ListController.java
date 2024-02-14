@@ -31,7 +31,6 @@ public class ListController {
     private EndangeredStatusRepository endangeredStatusRepository;
     @Autowired
     private PlantHardinessZoneRepository plantHardinessZoneRepository;
-
     @Autowired
     private SeedQuantityRepository seedQuantityRepository;
     @Autowired

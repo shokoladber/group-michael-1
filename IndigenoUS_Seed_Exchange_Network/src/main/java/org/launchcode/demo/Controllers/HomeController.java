@@ -1,8 +1,7 @@
 package org.launchcode.demo.controllers;
 
 import jakarta.validation.Valid;
-import org.launchcode.demo.models.BotanicalName;
-import org.launchcode.demo.models.CommonName;
+import org.launchcode.demo.models.*;
 import org.launchcode.demo.models.Seed;
 import org.launchcode.demo.models.data.BotanicalNameRepository;
 import org.launchcode.demo.models.data.CommonNameRepository;
@@ -60,7 +59,9 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
-                                    Errors errors, Model model, @RequestParam int botanicalNameId, @RequestParam List<Integer> commonNames) {
+                                    Errors errors, Model model, @RequestParam int botanicalNameId, @RequestParam List<Integer> commonNames,
+                                     @RequestParam List<Integer> endangeredStatuses, @RequestParam List<Integer> plantHardinessZones,
+                                     @RequestParam List<Integer> seedSources, @RequestParam List<Integer> seedQuanitities) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Seed");
@@ -71,6 +72,23 @@ public class HomeController {
 
         List<CommonName> commonNameObjs = (List<CommonName>) commonNameRepository.findAllById(commonNames);
         newSeed.setCommonNames(commonNameObjs);
+        seedRepository.save(newSeed);
+
+        List<EndangeredStatus> endangeredStatusObjs = (List<EndangeredStatus>) endangeredStatusRepository.findAllById(endangeredStatuses);
+        newSeed.setEndangeredStatuses(endangeredStatusObjs);
+        seedRepository.save(newSeed);
+
+        List<PlantHardinessZone> plantHardinessZoneObjs = (List<PlantHardinessZone>) plantHardinessZoneRepository.findAllById(plantHardinessZones);
+        newSeed.setPlantHardinessZones(plantHardinessZoneObjs);
+        seedRepository.save(newSeed);
+
+        List<SeedSource> seedSourceObjs = (List<SeedSource>) seedSourceRepository.findAllById(seedSources);
+        newSeed.setSeedSources(seedSourceObjs);
+        seedRepository.save(newSeed);
+
+        List<SeedQuantity> seedQuantityObjs = (List<SeedQuantity>) seedQuantityRepository.findAllById(seedQuanitities);
+
+        newSeed.setSeedQuantities(seedQuantityObjs);
         seedRepository.save(newSeed);
 
         return "redirect:";
