@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class SeedSource extends AbstractEntity {
     public SeedSource() {}
-    @ManyToMany(mappedBy = "seedSource")
+    @ManyToMany(mappedBy = "seedSources")
     private final List<Seed> seeds = new ArrayList<>();
 
     @NotBlank(message = "Seed source is required")

@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class EndangeredStatus extends AbstractEntity {
     public EndangeredStatus() {}
-    @ManyToMany(mappedBy = "endangeredStatus")
+    @ManyToMany(mappedBy = "endangeredStatuses")
     private final List<Seed> seeds = new ArrayList<>();
 
     @NotBlank(message = "Endangered status is required")

@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class PlantHardinessZone extends AbstractEntity {
     public PlantHardinessZone() {}
-    @ManyToMany(mappedBy = "plantHardinessZone")
+    @ManyToMany(mappedBy = "plantHardinessZones")
     private final List<Seed> seeds = new ArrayList<>();
 
     @NotBlank(message = "Plant hardiness zone is required")
