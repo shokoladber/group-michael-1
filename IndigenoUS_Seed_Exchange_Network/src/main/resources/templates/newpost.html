@@ -8,40 +8,33 @@
 <p th:replace="fragments::navbar"></p>
 <br/>
 
-    <form method="post" enctype="multipart/form-data">
-        <label>Title:
-            <input type="text" th:field="${blog.title}">
-            <span th:errors="${blog.title}"></span>
-        </label>
-<br/>
-        <label>Author:
-            <input type="text" th:field="${blog.author}">
-            <span th:errors="${blog.author}"></span>
+<form method="post" enctype="multipart/form-data">
+    <label>Title:
+        <input type="text" th:field="${blog.title}">
+        <span th:errors="${blog.title}"></span>
+    </label>
+    <br/>
+    <label>Author:
+        <input type="text" th:field="${blog.author}">
+        <span th:errors="${blog.author}"></span>
 
-       <!-- <label>Admin:
-            <select th:field="${admin.user}">
-                <option th:each="admin:${admins}" th:text="${admin.adminname}" th:value="${admin.id}"></option>
-            </select>
-        </label> -->
-
-
-<br/>
-<br/>
-
-           <input type="file" id="myFile" name="filename">
-
-
-
-<br/>
-
-        </label> Add Content:
         <br/>
-        <textarea th:field="${blog.content}" cols="75" rows="50"></textarea>
-        <span th:errors="${blog.content}"></span>
-        </label>
-<br/>
-<br/>
-        <input type="submit" value="Submit">
-    </form>
+        <br/>
+
+        <!--  <input type="file" id="myFile" name="filename"> -->
+
+
+
+        <br/>
+
+    </label> Add Content:
+    <br/>
+    <textarea th:field="${blog.content}" cols="75" rows="50"></textarea>
+    <span th:errors="${blog.content}"></span>
+    </label>
+    <br/>
+    <br/>
+    <input type="submit" value="Submit">
+</form>
 
 </body>
