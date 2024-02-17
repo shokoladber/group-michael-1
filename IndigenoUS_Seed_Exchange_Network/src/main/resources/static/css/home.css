@@ -1,0 +1,22 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url('https://static01.nyt.com/images/2021/11/24/dining/24corn1/22corn1-superJumbo.jpg?quality=75&auto=webp') no-repeat;
+  background-size: cover;
+
+}
+
+h1{
+color: #FCFFF9;
+font-weight: bold;
+font-family: Ariel;
+font-size: 125px
+}
+
+section {
+color: #FCFFF9;
+font-style: italic;
+font-weight: bold;
+font-family: Ariel;
+font-size: 32px
+}
