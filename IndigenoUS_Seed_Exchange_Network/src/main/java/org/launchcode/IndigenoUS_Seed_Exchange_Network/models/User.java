@@ -4,17 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-
-
 @Entity
-public class Admin {
+public class User {
+
     @Id
     @GeneratedValue
+
     private int id;
 
     private String email;
 
     private String password;
+
+    private boolean verified;
+
+    private boolean isAdmin;
+
+    private String role;
 
     public int getId() {
         return id;
@@ -38,5 +44,29 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
