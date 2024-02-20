@@ -25,7 +25,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/aboutus">About Us</a>
+                    <a class="nav-link active" aria-current="page" href="/about">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/blog">Blog</a>
@@ -40,12 +40,20 @@
         </div>
     </div>
 </nav>
-
+<div class="banner">
+    <br/>
+    <br/>
+    <br/>
+    <h1> Considering Donating to ISEN? </h1>
+    <br/>
+    <br/>
+    <br/>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <form th:action="@{/donate}" th:object="${request}" method="POST">
-                <h2>Considering Donating to IndigenoUS Seed Exchange Network?</h2>
+
                 <div class="mb-3">
                     <label for="firstName"
                            class="form-label" >First Name</label>

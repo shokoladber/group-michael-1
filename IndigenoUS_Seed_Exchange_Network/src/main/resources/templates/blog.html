@@ -34,8 +34,15 @@
         </div>
     </div>
 </nav>
-<center>
+<div class="banner">
+    <br/>
+    <br/>
+    <br/>
     <h1> IndigenoUS Seed Exchange Network Blog </h1>
+    <br/>
+    <br/>
+    <br/>
+</div>
 
     <div th:if="${blogs.size()} > 0">
         <th:block th:each="blog:${blogs}">
@@ -61,11 +68,11 @@
 </body>
 </body>
 <footer>
-    <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
-    <div class="footer-container">
-        <a class="link footer-left"></a>
-        <div class="footer-icons">
-            <ul>
+    <h4 style="color: white; font-size: 12px">
+        <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
+        <p class="copyright">© Anxious Syntax Squad 2024
+            <span class="social">
+
                 <a href="https://www.facebook.com"
                 <i class="fa-brands fa-facebook"</i>
                 </a>
@@ -81,12 +88,10 @@
                 <a href="https://twitter.com/"
                 <i class="fa-brands fa-twitter"></i>
                 </a>
-            </ul>
 
-            <div class="copyright">
-                2024 &copy by Anxious Syntax Squad
-                </p>
-            </div>
+          </span>
+        </p>
+
 </footer>
 </center>
 </html>
