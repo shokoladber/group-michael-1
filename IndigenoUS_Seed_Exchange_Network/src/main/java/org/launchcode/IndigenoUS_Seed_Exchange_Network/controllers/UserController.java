@@ -3,7 +3,6 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 import jakarta.validation.Valid;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.AdminRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.UserRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Admin;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,15 +35,14 @@ public class UserController {
             return "login";
         }
 
-        Optional<Admin> admin = adminRepository.findByEmail(user.getEmail());
-        if (admin.isPresent()) {
-            return "redirect:/admin/dashboard";
+        if (user.getEmail().equals("rtypien@gmail.com") && user.getPassword().equals("1234")){
+            return "redirect:/admin";
         }
 
         Optional<User> storedUser = userRepository.findByEmail(user.getEmail());
 
         if (storedUser.isPresent() && storedUser.get().getPassword().equals(user.getPassword())){
-            return "redirect:/home";
+            return "redirect:/";
         } else {
             model.addAttribute("error", "Invalid Log in information");
             return "login";

@@ -1,58 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:fragment="adminContent">
-
-
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/admin/allUsers">All Users</a>
-        <a href="/admin/addUser">Add User</a>
-    </div>
-
-
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Affiliation</th>
-            <th>Position</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.phoneNumber}"></td>
-            <td th:text="${user.affiliation}"></td>
-            <td th:text="${user.position}"></td>
-            <td><a th:href="@{'/admin/users/' + ${user.id} + '/edit'}">Edit</a></td>
-            <form th:action="@{'/admin/users/' + ${user.id} + '/delete'}" method="post">
-                <button type="submit">Delete</button>
+<h1 class="text-center">Admin Dashboard</h1>
+<h2>Add User</h2>
+<form th:action="@{/admin/addUser}" method="post" th:object="${user}" class="container">
+    <label>Email:</label>
+    <input type="text" th:field="*{email}" class="form-control">
+    <br>
+    <label>Password:</label>
+    <input type="password" th:field="*{password}" class="form-control">
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<h2>All Users</h2>
+<table class="table container">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+        <td class="table-actions">
+            <a th:href="@{/admin/editUser/{id}(id=${user.id})}" class="btn btn-primary btn-edit">Edit</a>
+            <form th:action="@{/admin/deleteUser/{id}(id=${user.id})}" method="post">
+                <button type="submit" class="btn btn-danger btn-delete">Delete</button>
             </form>
-        </tr>
-        </tbody>
-    </table>
-
-
-    <form th:object="${user}" method="post" th:action="@{/admin/addUser}" class="user-form">
-        <input type="text" th:field="*{name}" title="Enter user's full name"><br>
-        <input type="email" th:field="*{email}" title="Enter user's email"><br>
-        <input type="text" th:field="*{phoneNumber}" title="Enter user's phone number"><br>
-        <input type="text" th:field="*{affiliation}" title="Enter user's affiliation"><br>
-        <input type="text" th:field="*{position}" title="Enter user's position"><br>
-        <button type="submit">Add User</button>
-    </form>
-</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
-
-
+</html>

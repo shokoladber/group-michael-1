@@ -4,16 +4,23 @@ body {
     color: #333;
 }
 
-
 .container {
     margin-top: 50px;
+    padding: 0 15px;
 }
 
+h2 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+form {
+    margin-bottom: 20px;
+}
 
 label {
     font-weight: bold;
 }
-
 
 input[type="text"],
 input[type="password"] {
@@ -23,7 +30,6 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
 
 button[type="submit"] {
     padding: 10px 20px;
@@ -38,7 +44,6 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -50,19 +55,19 @@ button[type="submit"]:hover {
     border-bottom: 1px solid #ccc;
 }
 
-
-.table thead th {
-    background-color: #f8f9fa;
+.table th {
     font-weight: bold;
     text-align: left;
 }
 
-
-.table tbody tr:nth-child(even) {
+.table body tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-
+.table-actions {
+    display: flex;
+   align-items: center;
+}
 .btn-edit,
 .btn-delete {
     padding: 6px 12px;
@@ -74,9 +79,13 @@ button[type="submit"]:hover {
 .btn-edit {
     background-color: #ffc107;
     color: #212529;
+    margin-right: 25px;
+    vertical-align: middle;
 }
 
 .btn-delete {
     background-color: #dc3545;
     color: #fff;
+    margin-left: 25px;
+    vertical-align: middle;
 }

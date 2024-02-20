@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Admin {
-    @GeneratedValue
     @Id
+    @GeneratedValue
     private int id;
 
     private String email;

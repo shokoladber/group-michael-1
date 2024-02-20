@@ -18,6 +18,10 @@ public class User {
 
     private boolean verified;
 
+    private boolean isAdmin;
+
+    private String role;
+
     public int getId() {
         return id;
     }
@@ -48,5 +52,21 @@ public class User {
 
     public void setVerified(boolean verified) {
         this.verified = verified;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
