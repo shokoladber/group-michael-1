@@ -16,11 +16,9 @@ public class User {
 
     private String password;
 
-    private boolean verified;
-
     private boolean isAdmin;
 
-    private String role;
+
 
     public int getId() {
         return id;
@@ -46,27 +44,11 @@ public class User {
         this.password = password;
     }
 
-    public boolean isVerified() {
-        return verified;
-    }
-
-    public void setVerified(boolean verified) {
-        this.verified = verified;
-    }
-
-    public boolean isAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }
