@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${plantHardinessZones} and ${plantHardinessZones.size()}">no seeds!</p>
+
+<div class="container body-content">
+    <h2>Plant Hardiness Zones</h2>
+    <ul>
+        <li th:each="plantHardinessZone : ${plantHardinessZones}">
+            <a th:href="@{'/plantHardinessZones/view/' + ${plantHardinessZone.id}}" th:text="${plantHardinessZone.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/plantHardinessZones/add'}">Add Plant Hardiness Zones</a>
+
+</div>
+
+</body>
+</html>

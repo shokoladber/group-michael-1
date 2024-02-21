@@ -1,6 +1,4 @@
-body {
 
-}
 h1{
 color: #FCFFF9;
 font-weight: bold;
@@ -8,9 +6,33 @@ font-family: Ariel;
 font-size: 95px
 }
 
+h2{
+text-align: center;
+}
+
+h3{
+text-align: center;
+}
+
+h4{
+text-align: center;
+}
+.center{
+
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div {
 
-text-align:center;
+text-align:left;
+
+}
+
+section {
+
+text-align: justify;
 
 }
 
@@ -22,7 +44,11 @@ background-repeat: no-repeat;
 
 }
 
-
+button {
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 footer{
     background-color: #FCFFF9;
@@ -31,5 +57,6 @@ footer{
     width:100%
     left:0px;
     bottom:0px;
+    padding: 5px;
 
 }
