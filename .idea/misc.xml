@@ -10,13 +10,17 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$USER_HOME$/IndigenoUS-Seed-Exchange-Network/pom.xml" />
         <option value="$PROJECT_DIR$/IndigenoUS-Seed-Network-Exchange/pom.xml" />
         <option value="$PROJECT_DIR$/IndigenoUS_Seed_Network_Exchange/pom.xml" />
+        <option value="$USER_HOME$/IndigenoUS-Seed-Exchange-Network/pom.xml" />
       </set>
     </option>
   </component>
+
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" project-jdk-name="17" project-jdk-type="JavaSDK">
+
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
+
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

@@ -1,1 +1,1 @@
-rootProject.name = "demo"
+rootProject.name = "IndigenoUS_Seed_Exchange_Network"

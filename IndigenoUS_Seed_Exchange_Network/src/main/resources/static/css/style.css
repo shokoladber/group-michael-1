@@ -1,0 +1,53 @@
+h1{
+color: #FCFFF9;
+font-weight: bold;
+font-family: Ariel;
+font-size: 95px
+}
+
+h2{
+
+font-weight: bold;
+font-family: Ariel;
+font-size: 24px
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url ('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEWgfnHovHVoAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC')
+  background-size: cover;
+
+}
+
+div {
+
+text-align:center;
+
+
+}
+
+section {
+text-align: justify;
+}
+
+.banner {
+background: url('https://media-gcs.com/uploads/2022/10/everything-free-cannabis-seeds-banner.jpg');
+width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+
+
+footer{
+    background-color: #74992e;
+    text-align:center;
+    position:absolute
+    width:100%
+    left:0px;
+    bottom:0px;
+    padding: 5px;
+}
+

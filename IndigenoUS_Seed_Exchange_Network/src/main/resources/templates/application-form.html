@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+   <meta charset="UTF-8">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   <link th:href="@{/css/application.css}" rel="stylesheet" />
+   <head>
+    <title>Application Form</title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Indigenous Seed Exchange Network</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/donate">Donate</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="banner">
+    <br/>
+    <br/>
+    <br/>
+    <h1> How to Join Our Network </h1>
+    <br/>
+    <br/>
+    <br/>
+</div>
+<div class="container">
+
+<h2>Application Form</h2>
+
+<form th:action = "@{/application/submit}" method="post" th:object="${application}" style="max-width:600px;">
+
+    <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" th:field="*{fullName}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="affiliation">Affiliation:</label>
+        <input type="text" id="affiliation" name="affiliation" th:field="*{affiliation}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" th:field="*{position}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="introduction">Introduction:</label>
+        <textarea id="introduction" name="introduction" th:field="*{introduction}" class="form-control" rows="6" required></textarea>
+    </div>
+
+
+    <div class="form-group">
+        <label for="refName1">Reference 1 Name:</label>
+        <input type="text" id="refName1" name="refName1" th:field="*{reference1.name}" class="form-control" required>
+
+        <label for="refInstitution1">Institution:</label>
+        <input type="text" id="refInstitution1" name="refInstitution1" th:field="*{reference1.institution}" class="form-control" required>
+
+        <label for="refPosition1">Position:</label>
+        <input type="text" id="refPosition1" name="refPosition1" th:field="*{reference1.position}" class="form-control" required>
+
+        <label for="refEmail1">Email:</label>
+        <input type="email" id="refEmail1" name="refEmail1" th:field="*{reference1.email}" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="refName2">Reference 2 Name:</label>
+        <input type="text" id="refName2" name="refName2" th:field="*{reference2.name}" class="form-control" required>
+
+        <label for="refInstitution2">Institution:</label>
+        <input type="text" id="refInstitution2" name="refInstitution2" th:field="*{reference2.institution}" class="form-control" required>
+
+        <label for="refPosition2">Position:</label>
+        <input type="text" id="refPosition2" name="refPosition2" th:field="*{reference2.position}" class="form-control" required>
+
+        <label for="refEmail2">Email:</label>
+        <input type="email" id="refEmail2" name="refEmail2" th:field="*{reference2.email}" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>
+
+
+<div th:if="${successMessage}" class="alert alert-success" role="alert" style="max-width:600px;">
+    <p th:text="${successMessage}" class="form-control"></p>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
