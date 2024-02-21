@@ -12,5 +12,10 @@ const LoginButton = () => {
         );
     }
 };
+
+function LoginButtonCall() {
+   return LoginButton;
+    };
  
+export LoginButtonCall;
 export default LoginButton;
