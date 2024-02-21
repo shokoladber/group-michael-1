@@ -22,17 +22,17 @@ public class BotanicalNameController {
     private BotanicalNameRepository botanicalNameRepository;
     private static List<String> botanicalNames = new ArrayList<>();
 
-    @GetMapping ("/")
-    public String displaySeed(Model model) {
+    @GetMapping ({"/", ""})
+    public String index(Model model) {
         model.addAttribute("botanicalNames", botanicalNameRepository.findAll());
-        return "displaySeed";
+        return "index";
     }
 
     @GetMapping("add")
     public String displayAddBotanicalNameForm(Model model) {
         model.addAttribute(new Seed());
         model.addAttribute("botanicalNames", botanicalNameRepository.findAll());
-        return "seeds/add";
+        return "botanicalNames/add";
     }
 
     @PostMapping("add")
@@ -40,13 +40,13 @@ public class BotanicalNameController {
                                          Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add BotanicalNames");
-            return "seeds/add";
+            return "botanicalNames/add";
         }
         botanicalNameRepository.save(newBotanicalName);
         return "redirect:";
     }
 
-    @GetMapping("view/{botanicalNameID}")
+    @GetMapping("view/{botanicalNameId}")
     public String displayViewBotanicalName(Model model, @PathVariable int botanicalNameId) {
 
         Optional optBotanicalName = botanicalNameRepository.findById(botanicalNameId);

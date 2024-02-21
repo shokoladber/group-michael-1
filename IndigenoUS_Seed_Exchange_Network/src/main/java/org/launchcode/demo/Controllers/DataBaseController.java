@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
-public class HomeController {
+@RequestMapping("dataBase")
+public class DataBaseController {
 
     @Autowired
     private BotanicalNameRepository botanicalNameRepository;
@@ -38,10 +40,10 @@ public class HomeController {
     @Autowired
     private SeedSourceRepository seedSourceRepository;
 
-    @RequestMapping("/")
-    public String displaySeed(Model model) {
+    @GetMapping ({"/", ""})
+    public String index(Model model) {
         model.addAttribute("seeds", seedRepository.findAll());
-        return "displaySeed";
+        return "dataBase";
     }
 
     @GetMapping("add")

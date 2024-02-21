@@ -17,7 +17,7 @@
   <div class="form-group">
     <label th:for="botanicalName">Botanical Names</label>
     <select name="botanicalNameId">
-      <option th:each="botanicalName : ${botanicalName}"
+      <option th:each="botanicalName : ${botanicalNames}"
               th:text="${botanicalName.name}"
               th:value="${botanicalName.id}"></option>
     </select>
@@ -31,6 +31,42 @@
       <label th:text="${commonName.name}"></label>
     </th:block>
     <a th:href="@{'/commonNames/add'}">Add Common Names</a>
+  </div>
+
+  <div class="form-group">
+    <label th:for="endangeredStatuses">Endangered Statuses</label>
+    <th:block th:each="endangeredStatus : ${endangeredStatuses}">
+      <input type="checkbox" name="endangeredStatuses" th:value="${endangeredStatus.id}">
+      <label th:text="${endangeredStatus.name}"></label>
+    </th:block>
+    <a th:href="@{'/endangeredStatuses/add'}">Add Endangered Statuses</a>
+  </div>
+
+  <div class="form-group">
+    <label th:for="plantHardinessZones">Plant Hardiness Zones</label>
+    <th:block th:each="plantHardinessZone : ${plantHardinessZones}">
+      <input type="checkbox" name="plantHardinessZones" th:value="${plantHardinessZone.id}">
+      <label th:text="${plantHardinessZone.name}"></label>
+    </th:block>
+    <a th:href="@{'/plantHardinessZones/add'}">Add Plant Hardiness Zones</a>
+  </div>
+
+  <div class="form-group">
+    <label th:for="seedQuantities">Seed Quantities</label>
+    <th:block th:each="seedQuantity : ${seedQuantities}">
+      <input type="checkbox" name="seedQuantities" th:value="${seedQuantity.id}">
+      <label th:text="${seedQuantity.name}"></label>
+    </th:block>
+    <a th:href="@{'/seedQuantities/add'}">Add Seed Quantity</a>
+  </div>
+
+  <div class="form-group">
+    <label th:for="seedSources">Seed Sources</label>
+    <th:block th:each="seedSource : ${seedSources}">
+      <input type="checkbox" name="seedSources" th:value="${seedSource.id}">
+      <label th:text="${seedSource.name}"></label>
+    </th:block>
+    <a th:href="@{'/seedSources/add'}">Add Seed Source</a>
   </div>
 
   <input type="submit" value="Add Seed" />
