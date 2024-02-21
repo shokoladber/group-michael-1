@@ -24,6 +24,15 @@ text-align: center;
   margin-right: auto;
 }
 
+
+.banner {
+background: url('https://tns.commonweal.org/app/uploads/2022/11/banner_StoriesLand-940x330-1.jpg');
+width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
 div {
 
 text-align:left;
