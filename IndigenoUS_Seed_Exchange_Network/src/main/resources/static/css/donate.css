@@ -1,0 +1,35 @@
+body {
+
+}
+h1{
+color: #FCFFF9;
+font-weight: bold;
+font-family: Ariel;
+font-size: 95px
+}
+
+div {
+
+text-align:center;
+
+}
+
+.banner {
+background: url('https://tns.commonweal.org/app/uploads/2022/11/banner_StoriesLand-940x330-1.jpg');
+width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+
+
+footer{
+    background-color: #FCFFF9;
+    text-align:center;
+    position:absolute
+    width:100%
+    left:0px;
+    bottom:0px;
+
+}
