@@ -1,0 +1,30 @@
+h1{
+color: #FCFFF9;
+font-weight: bold;
+font-family: Ariel;
+font-size: 95px
+}
+
+
+h2{
+text-align: center;
+}
+
+button {
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div {
+
+text-align:center;
+
+
+}
+.banner {
+background: url('https://i.ebayimg.com/images/g/Z2sAAOSwld9dMPp3/s-l1200.webp');
+width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+}

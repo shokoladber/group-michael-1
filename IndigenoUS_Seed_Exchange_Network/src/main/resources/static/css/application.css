@@ -3,37 +3,34 @@ color: #FCFFF9;
 font-weight: bold;
 font-family: Ariel;
 font-size: 95px
-}
-
-body{
 text-align: center;
 }
 
-   .form-group {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .form-group label {
-            width: 50px; /* Adjust the width based on your preference */
-            text-align: left;
-            margin-right: 10px;
-        }
-
-        .form-group input {
-            flex: 1;
-        }
-
+h2{
+text-align: center;
+}
+h3{
+text-align: center;
+}
+h4{
+text-align: center;
+}
+h5{
+text-align: center;
+}
 .banner {
 background: url('https://civileats.com/wp-content/uploads/2023/05/230508-faces-of-the-farm-bill-akiptan-skya-ducheneaux-cdfi-investment-indigenous-foodways-3-Schreiner-credit-sakari-farms.jpg');
 width: 100%;
 background-size: cover;
 background-repeat: no-repeat;
+text-align: center;
 }
 
+button {
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 footer{
