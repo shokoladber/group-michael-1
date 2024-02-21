@@ -3,11 +3,13 @@ h1{
 color: #FCFFF9;
 font-weight: bold;
 font-family: Ariel;
-font-size: 95px
+font-size: 95
+
 }
 
 h2{
 text-align: center;
+
 }
 
 h3{
@@ -17,6 +19,7 @@ text-align: center;
 h4{
 text-align: center;
 }
+
 .center{
 
  display: block;
@@ -30,7 +33,11 @@ background: url('https://tns.commonweal.org/app/uploads/2022/11/banner_StoriesLa
 width: 100%;
 background-size: cover;
 background-repeat: no-repeat;
-
+text-align: center;
+color: #FCFFF9;
+font-weight: bold;
+font-family: Ariel;
+font-size: 95
 }
 
 div {
