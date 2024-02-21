@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body class="container  body-content">
+<h1>Add Botanical Name</h1>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Botanical Name</label>
+        <input class="form-control" th:field="${botanicalName.name}" />
+        <span th:errors="${botanicalName.name}" class="error"></span>
+    </div>
+    <input type="submit" value="Add Botanical Name" />
+</form>
+
+</body>
+</html>

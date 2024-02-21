@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${botanicalNames} and ${botanicalNames.size()}">no seeds!</p>
+
+<div class="container body-content">
+    <h2>Botanical Names</h2>
+    <ul>
+        <li th:each="botanicalName : ${botanicalNames}">
+            <a th:href="@{'/botanicalNames/view/' + ${botanicalName.id}}" th:text="${botanicalName.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/botanicalNames/add'}">Add Botanical Names</a>
+
+</div>
+
+</body>
+</html>
