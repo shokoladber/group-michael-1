@@ -22,8 +22,7 @@ import java.util.Optional;
 public class BlogController {
     @Autowired
     BlogRepository blogRepository;
-    @Autowired
-    AdminRepository adminRepository;
+
 
     @GetMapping("/blog")
     public String blog(Model model) {

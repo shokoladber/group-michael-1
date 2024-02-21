@@ -6,6 +6,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network/build" />
     </content>
+<<<<<<< HEAD
+    <content url="file://$MODULE_DIR$/../../IndigenoUS_Seed_Exchange_Network" />
+=======
+>>>>>>> b40868a5ca3ac7b05b2baa5a2db5c77dc3fceb37
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
