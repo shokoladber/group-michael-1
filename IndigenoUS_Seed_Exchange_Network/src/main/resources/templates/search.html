@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <form th:action="@{/search/results}" method = "post">
+        <h2>Search by:</h2>
+
+        <p>
+            <span th:each="column : ${columns}">
+                <input
+                        type="radio"
+                        name="searchType"
+                        th:id="${column.key}"
+                        th:value="${column.key}"
+                        th:checked="${column.key == 'all'}"/>
+                <label th:for="${column.key}" th:text="${column.value}"></label>
+            </span>
+
+        </p>
+
+        <p>
+            <label for="searchTerm">Keyword:</label>
+            <input type="text" name="searchTerm" id="searchTerm" />
+        </p>
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <hr />
+
+    <table class="seed-listing">
+        <tr th:each="seed : ${seeds}">
+            <td>
+                <p>
+                    Seed Id:
+                    <a th:href="@{'/view/' + ${seed.id}}" th:text="${seed.id}"></a>
+                </p>
+                <p th:text="${'Name: ' + seed.name}"></p>
+                <p>
+                    Botanical Name:
+                    <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName.id}}" th:text="${seed.botanicalName.name}"></a>
+                </p>
+                <p>
+                    Common Name:
+                <ul th:each="commonName : ${seed.commonNames}">
+                    <li>
+                        <a th:href="@{'/commonNames/view/' + ${commonName.id}}" th:text="${commonName.name}"></a>
+                    </li>
+                </ul>
+                </p>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
