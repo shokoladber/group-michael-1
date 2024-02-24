@@ -56,6 +56,38 @@
                     </li>
                 </ul>
                 </p>
+                <p>
+                    Endangered:
+                <ul th:each="isEndangered : ${seed.endangered}">
+                    <li>
+                        <a th:href="@{'/endangered/view/' + ${isEndangered.id}}" th:text="${isEndangered.name}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Indigenous Sourced:
+                <ul th:each="sourceIsIndigenous : ${seed.isIndigenous}">
+                    <li>
+                        <a th:href="@{'/isIndigenous/view/' + ${sourceIsIndigenous.id}}" th:text="${sourceIsIndigenous.name}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Plant Hardiness Zone:
+                <ul th:each="plantHardinessZone : ${seed.plantHardinessZones}">
+                    <li>
+                        <a th:href="@{'/plantHardinessZones/view/' + ${plantHardinessZone.id}}" th:text="${plantHardinessZone.name}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Seed Quantity:
+                <ul th:each="seedQuantity : ${seed.seedQuantities}">
+                    <li>
+                        <a th:href="@{'/seedQuantities/view/' + ${seedQuantity.id}}" th:text="${seedQuantity.name}"></a>
+                    </li>
+                </ul>
+                </p>
 
             </td>
         </tr>

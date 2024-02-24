@@ -1,5 +1,6 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
+import com.stripe.model.tax.Registration;
 import jakarta.validation.Valid;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
@@ -15,19 +16,17 @@ import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/dataBase")
 public class DataBaseController {
-
     @Autowired
     private SeedRepository seedRepository;
 
-    @GetMapping ({"/", ""})
-    public String index(Model model) {
+    @GetMapping ({"/dataBase"})
+    public String dataBase(Model model) {
         model.addAttribute("seeds", seedRepository.findAll());
         return "dataBase";
     }
 
-    @GetMapping("add")
+    @GetMapping("/add")
     public String displayAddSeedForm(Model model) {
         model.addAttribute("title", "Add Seed");
 //        model.addAttribute(new Seed());
@@ -35,7 +34,7 @@ public class DataBaseController {
         return "add";
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
                                     Errors errors, Model model, @RequestParam int seedId, @RequestParam List<Integer> seeds) {
 
@@ -49,13 +48,13 @@ public class DataBaseController {
         return "redirect:";
     }
 
-    @GetMapping("/seeds/{seedId}")
-    public String displayViewSeed(Model model, @PathVariable int seedId) {
+    @GetMapping("/seed/{seedId}")
+    public String displayViewSeed(Model model, Seed seed, @PathVariable int seedId) {
         Optional optSeed = seedRepository.findById(seedId);
         if (optSeed.isPresent()) {
-            Seed seeds = (Seed) optSeed.get();
-            model.addAttribute("seeds", seeds);
-            return "seeds";
+            seed = (Seed) optSeed.get();
+            model.addAttribute("seed", seed);
+            return "seed";
         } else {
             return "redirect:../";
         }

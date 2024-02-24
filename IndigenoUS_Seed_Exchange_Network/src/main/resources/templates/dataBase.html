@@ -9,7 +9,7 @@
 <div class="container body-content">
     <h2>IndigenoUS Seed Exchange Network</h2>
     <ul>
-        <li th:each="seed : ${seeds}">
+        <li th:each="seed : ${seed}">
             <a th:href="@{'/view/' + ${seed.id}}" th:text="${seed.name}"></a>
         </li>
     </ul>

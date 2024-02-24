@@ -16,6 +16,10 @@
         <th>All</th>
         <th>Botanical Name</th>
         <th>Common Name</th>
+        <th>Endangered</th>
+        <th>Sourced from Indigenous</th>
+        <th>Plant Hardiness Zone</th>
+        <th>Seed Quantity</th>
     </tr>
 
     <tr>
@@ -40,18 +44,18 @@
             </li>
         </td>
         <td>
+            <li th:each="sourceIsIndigenous : ${sourceIsIndigenous}">
+                <a th:href="@{/list/seeds(column=sourceIsIndigenous,value=${sourceIsIndigenous.name})}" th:text="${sourceIsIndigenous.name}"></a>
+            </li>
+        </td>
+        <td>
             <li th:each="plantHardinessZone : ${plantHardinessZones}">
-                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
+                <a th:href="@{/list/seeds(column=plantHardinessZone,value=${plantHardinessZone.name})}" th:text="${plantHardinessZone.name}"></a>
             </li>
         </td>
         <td>
-            <li th:each="commonName : ${commonNames}">
-                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
-            </li>
-        </td>
-        <td>
-            <li th:each="commonName : ${commonNames}">
-                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
+            <li th:each="seedQuantity : ${seedQuantity}">
+                <a th:href="@{/list/seeds(column=seedQuantity,value=${seedQuantity.name})}" th:text="${seedQuantity.name}"></a>
             </li>
         </td>
     </tr>
