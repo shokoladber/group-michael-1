@@ -1,6 +1,8 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SeedData {
 
@@ -30,20 +32,18 @@ public class SeedData {
 
     public static String getFieldValue(Seed seed, String fieldName){
         String theValue;
-        if (fieldName.equals("name")){
-            theValue = seed.getName();
-        } else if (fieldName.equals("botanicalName")){
+       if (fieldName.equals("botanicalName")){
             theValue = seed.getBotanicalName().toString();
         } else if (fieldName.equals("commonName")){
-            theValue = seed.getCommonNames().toString();
-        } else if (fieldName.equals("endangeredStatus")){
-            theValue = seed.getEndangeredStatuses().toString();
+            theValue = seed.getCommonName().toString();
+        } else if (fieldName.equals("isEndangered")){
+            theValue = seed.getEndangered().toString();
         } else if (fieldName.equals("plantHardinessZone")){
-            theValue = seed.getPlantHardinessZones().toString();
+            theValue = seed.getPlantHardinessZone().toString();
         } else if (fieldName.equals("seedQuantity")){
-            theValue = seed.getSeedQuantities().toString();
+            theValue = seed.getSeedQuantity().toString();
         } else {
-        theValue = seed.getSeedSources().toString();
+        theValue = seed.getSourceIsIndigenous().toString();
     }
 
         return theValue;
@@ -56,19 +56,17 @@ public class SeedData {
 
         for (Seed seed : allSeeds) {
 
-            if (seed.getName().toLowerCase().contains(value.toLowerCase())) {
+          if (seed.getBotanicalName().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
-            } else if (seed.getBotanicalName().toString().toLowerCase().contains(value.toLowerCase())) {
+            } else if (seed.getCommonName().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
-            } else if (seed.getCommonNames().toString().toLowerCase().contains(value.toLowerCase())) {
+            } else if (seed.getEndangered().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
-            } else if (seed.getEndangeredStatuses().toString().toLowerCase().contains(value.toLowerCase())) {
+            }else if (seed.getPlantHardinessZone().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
-            }else if (seed.getPlantHardinessZones().toString().toLowerCase().contains(value.toLowerCase())) {
+            }else if (seed.getSeedQuantity().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
-            }else if (seed.getSeedQuantities().toString().toLowerCase().contains(value.toLowerCase())) {
-                results.add(seed);
-            }else if (seed.getSeedSources().toString().toLowerCase().contains(value.toLowerCase())) {
+            }else if (seed.getSourceIsIndigenous().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(seed);
             }
         }

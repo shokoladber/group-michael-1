@@ -1,86 +1,36 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
+//Creating attributes of Object Seed
 @Entity
-public class Seed extends AbstractEntity {
+public class Seed {
 
-    @ManyToOne
-    private BotanicalName botanicalName;
-    @ManyToMany
-    private List<CommonName> commonNames = new ArrayList<>();
-    @ManyToMany
-    private List<EndangeredStatus> endangeredStatuses = new ArrayList<>();
-    @ManyToMany
-    private List<PlantHardinessZone> plantHardinessZones = new ArrayList<>();
-    @ManyToMany
-    private List<SeedQuantity> seedQuantities = new ArrayList<>();
-    @ManyToMany
-    private List<SeedSource> seedSources = new ArrayList<>();
+    @Id
+    @GeneratedValue
+    private int seedId;
 
-    public Seed() {}
+    private String BotanicalName;
+    private String CommonName;
+    private Integer SeedQuantity;
+    private Boolean isEndangered = true;
+    private Boolean SourceIsIndigenous = true;
+    private String[] PlantHardinessZone = {"1a", "1b", "2a", "2b", "3a", "3b", "4a", "4b", "5a", "5b", "6a", "6b",
+            "7a", "7b", "8a", "8b", "9a", "9b", "10a", "10b", "11a", "11b", "12a", "12b", "13a", "13b"};
 
-    // Initialize the id and value fields.
-    public Seed(BotanicalName aBotanicalName, List<CommonName> someCommonNames, List<EndangeredStatus> endangeredStatuses,
-                List<PlantHardinessZone> plantHardinessZones, List<SeedQuantity> seedQuantities, List<SeedSource> seedSources) {
-        super();
-        this.botanicalName = aBotanicalName;
-        this.commonNames = someCommonNames;
-        this.endangeredStatuses = endangeredStatuses;
-        this.plantHardinessZones = plantHardinessZones;
-        this.seedQuantities = seedQuantities;
-        this.seedSources = seedSources;
+//Creating Object Seed
+    public Seed(String botanicalName, String commonName, Boolean endangered,
+                String[] plantHardinessZone, Integer seedQuantity, Boolean isIndigenous) {
 
-    }
-
-    // Getters and setters.
-    public BotanicalName getBotanicalName() {
-        return botanicalName;
-    }
-    public void setBotanicalName(BotanicalName botanicalName) {
         this.botanicalName = botanicalName;
+        this.commonName = commonName;
+        this.plantHardinessZone = plantHardinessZone;
+        this.seedQuantity = seedQuantity;
+        this.isEndangered = isEndangered;
+        this.sourceIsIndigenous = sourceIsIndigenous;
     }
 
-    public List<CommonName> getCommonNames() {
-        return commonNames;
-    }
-    public void setCommonNames(List<CommonName> commonNames) {
-        this.commonNames = commonNames;
-    }
 
-    public List<EndangeredStatus> getEndangeredStatuses() {
-        return endangeredStatuses;
-    }
-    public void setEndangeredStatuses(List<EndangeredStatus> endangeredStatuses) {
-        this.endangeredStatuses = endangeredStatuses;
-    }
-
-    public List<PlantHardinessZone> getPlantHardinessZones() {
-        return plantHardinessZones;
-    }
-    public void setPlantHardinessZones(List<PlantHardinessZone> plantHardinessZones) {
-        this.plantHardinessZones = plantHardinessZones;
-    }
-
-    public List<SeedQuantity> getSeedQuantities() {
-        return seedQuantities;
-    }
-    public void setSeedQuantities(List<SeedQuantity> seedQuantities) {
-        this.seedQuantities = seedQuantities;
-    }
-
-    public List<SeedSource> getSeedSources() {
-        return seedSources;
-    }
-
-    public void setSeedSources(List<SeedSource> seedSources) {
-        this.seedSources = seedSources;
-    }
-}
-
+    //Getters and Setters

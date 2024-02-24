@@ -25,8 +25,28 @@
             </li>
         </td>
         <td>
-            <li th:each="employer : ${employers}">
+            <li th:each="botanicalName : ${botanicalNames}">
                 <a th:href="@{/list/seeds(column=botanicalName,value=${botanicalName.name})}" th:text="${botanicalName.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="commonName : ${commonNames}">
+                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="isEndangered : ${endangered}">
+                <a th:href="@{/list/seeds(column=isEndangered,value=${isEndangered.name})}" th:text="${isEndangered.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="plantHardinessZone : ${plantHardinessZones}">
+                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="commonName : ${commonNames}">
+                <a th:href="@{/list/seeds(column=commonName,value=${commonName.name})}" th:text="${commonName.name}"></a>
             </li>
         </td>
         <td>
