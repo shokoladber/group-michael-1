@@ -3,6 +3,7 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Getter;
 
 @Entity
 public class User {
@@ -17,6 +18,9 @@ public class User {
     private String password;
 
     private boolean isAdmin;
+
+    @Getter
+    private boolean verified;
 
 
 
@@ -50,5 +54,9 @@ public class User {
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }
