@@ -6,22 +6,25 @@ import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogData;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
+
+
 
 @Controller
 public class BlogController {
     @Autowired
     BlogRepository blogRepository;
+
+    public static final String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
+
 
 
     @GetMapping("/blog")
@@ -97,10 +100,12 @@ public class BlogController {
 
 
     @PostMapping("/new-post")
-    public String handlePostForm(Model model, @ModelAttribute @Valid Blog blog, Errors errors){
-        model.addAttribute("blog", blog);
-        if(errors.hasErrors()){
-            return "newPost";
+    public String handlePostForm(Model model, @ModelAttribute Blog blog, @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
+        if (image != null && !image.isEmpty()) {
+            String fileName = image.getOriginalFilename();
+            File uploadedFile = new File(UPLOAD_DIRECTORY + File.separator + fileName);
+            image.transferTo(uploadedFile);
+            blog.setImageUrl("/uploads/" + fileName);
         }
 
         blogRepository.save(blog);
