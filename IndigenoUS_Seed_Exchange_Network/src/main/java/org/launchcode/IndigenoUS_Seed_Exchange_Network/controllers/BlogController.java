@@ -11,15 +11,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
+import java.nio.file.Files;
 
 
 
 @Controller
 public class BlogController {
+
     @Autowired
     BlogRepository blogRepository;
 
@@ -96,8 +108,20 @@ public class BlogController {
 
         return "newPost";
     }
-
-
+    @GetMapping("/uploads/{fileName:.+}")
+    @ResponseBody
+    public ResponseEntity<byte[]> serveFile(@PathVariable String fileName) throws IOException {
+        Resource file = new FileSystemResource(UPLOAD_DIRECTORY + File.separator + fileName);
+        if (file.exists() && file.isReadable()) {
+            byte[] data = Files.readAllBytes(file.getFile().toPath());
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+            return new ResponseEntity<>(data, headers, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @PostMapping("/new-post")
     public String handlePostForm(Model model, @ModelAttribute Blog blog, @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
