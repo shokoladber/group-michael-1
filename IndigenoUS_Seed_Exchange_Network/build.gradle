@@ -3,7 +3,6 @@ plugins {
 	id 'org.springframework.boot' version '3.2.2'
 	id 'io.spring.dependency-management' version '1.1.4'
 }
-
 group = 'org.launchcode'
 version = '0.0.1-SNAPSHOT'
 
@@ -30,6 +29,11 @@ dependencies {
 //	implementation ("jakarta.mail:jakarta.mail-api:2.0.1")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	implementation 'com.okta.spring:okta-spring-boot-starter:3.0.6'
 }
 
 tasks.named('test') {

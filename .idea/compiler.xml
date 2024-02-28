@@ -15,6 +15,7 @@
       <module name="demo" target="17" />
       <module name="demo.main" target="17" />
       <module name="demo.test" target="17" />
+      <module name="group-michael-1.IndigenoUS_Seed_Exchange_Network" target="17" />
       <module name="IndigenoUS-Seed-Exchange-Network" target="1.7" />
       <module name="IndigenoUS-Seed-Network-Exchange" target="1.7" />
       <module name="IndigenoUS_Seed_Exchange_Network" target="17" />
