@@ -1,66 +1,75 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
-//Creating attributes of Object Seed
+
 @Entity
 public class Seed {
 
     @Id
     @GeneratedValue
-    private int seedId;
+    private int id;
 
-    private String BotanicalName;
-    private String CommonName;
-    private Integer SeedQuantity;
+    @Getter
+    @NotBlank(message = "Must include botanical name")
+    @Size(min = 3, max = 100, message = "Botanical name must be between 3 and 100 characters")
+    private String botanicalName;
+
+    @Getter
+    @NotBlank(message = "Must include common name")
+    @Size(min = 3, max = 100, message = "Common name must be between 3 and 100 characters")
+    private String commonName;
+
+    @Getter
+    private Integer seedQuantity;
+
+    @Getter
     private Boolean isEndangered = true;
-    private Boolean SourceIsIndigenous = true;
-    private String[] PlantHardinessZone = {"1a", "1b", "2a", "2b", "3a", "3b", "4a", "4b", "5a", "5b", "6a", "6b",
+
+    @Getter
+    private Boolean sourceIsIndigenous = true;
+
+    @Getter
+    private String[] plantHardinessZone = {"1a", "1b", "2a", "2b", "3a", "3b", "4a", "4b", "5a", "5b", "6a", "6b",
             "7a", "7b", "8a", "8b", "9a", "9b", "10a", "10b", "11a", "11b", "12a", "12b", "13a", "13b"};
+
+    public Seed() {}
+
 
     //Creating Object Seed
     public Seed(String botanicalName, String commonName, Boolean endangered,
                 String[] plantHardinessZone, Integer seedQuantity, Boolean isIndigenous) {
-
-        this.BotanicalName = botanicalName;
-        this.CommonName = commonName;
-        this.PlantHardinessZone = plantHardinessZone;
-        this.SeedQuantity = seedQuantity;
+        this();
+        this.botanicalName = botanicalName;
+        this.commonName = commonName;
+        this.plantHardinessZone = plantHardinessZone;
+        this.seedQuantity = seedQuantity;
         this.isEndangered = endangered;
-        this.SourceIsIndigenous = isIndigenous;
+        this.sourceIsIndigenous = isIndigenous;
     }
+
 
     //Getters and Setters
-
-    public int getSeedId() {
-        return seedId;
-    }
-
-    public String getBotanicalName() {
-        return BotanicalName;
+    public int getId() {
+        return id;
     }
 
     public void setBotanicalName(String botanicalName) {
-        BotanicalName = botanicalName;
-    }
-
-    public String getCommonName() {
-        return CommonName;
+        this.botanicalName = botanicalName;
     }
 
     public void setCommonName(String commonName) {
-        CommonName = commonName;
-    }
-
-    public Integer getSeedQuantity() {
-        return SeedQuantity;
+        this.commonName = commonName;
     }
 
     public void setSeedQuantity(Integer seedQuantity) {
-        SeedQuantity = seedQuantity;
+        this.seedQuantity = seedQuantity;
     }
 
     public Boolean getEndangered() {
@@ -71,20 +80,12 @@ public class Seed {
         isEndangered = endangered;
     }
 
-    public Boolean getSourceIsIndigenous() {
-        return SourceIsIndigenous;
-    }
-
     public void setSourceIsIndigenous(Boolean sourceIsIndigenous) {
-        SourceIsIndigenous = sourceIsIndigenous;
-    }
-
-    public String[] getPlantHardinessZone() {
-        return PlantHardinessZone;
+        this.sourceIsIndigenous = sourceIsIndigenous;
     }
 
     public void setPlantHardinessZone(String[] plantHardinessZone) {
-        PlantHardinessZone = plantHardinessZone;
+        this.plantHardinessZone = plantHardinessZone;
     }
 }
 

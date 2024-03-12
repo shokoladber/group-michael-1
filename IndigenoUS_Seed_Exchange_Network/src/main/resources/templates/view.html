@@ -11,12 +11,17 @@
     <p th:text="${'ID: ' + seed.id}"></p>
     <p th:text="${'Name: ' + seed.name}"></p>
     <p>
-        Botanical Name: <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName.id}}" th:text="${seed.botanicalName.name}"></a>
+        Botanical Name:
+    <ul>
+        <li th:each="botanicalName : ${seed.botanicalName}">
+            <a th:href="@{'/view' + ${seed.botanicalName.id}}" th:text="${seed.botanicalName.name}"></a>
+        </li>
+    </ul>
     </p>
     <p> Common Name:
     <ul>
         <li th:each="commonName : ${seed.commonName}">
-            <a th:href="@{'/commonNames/view/' + ${commonName.id}}" th:text="${commonName.name}"></a>
+            <a th:href="@{'/view' + ${commonName.id}}" th:text="${commonName.name}"></a>
         </li>
     </ul>
     </p>

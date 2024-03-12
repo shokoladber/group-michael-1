@@ -1,8 +1,6 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SeedData {
 

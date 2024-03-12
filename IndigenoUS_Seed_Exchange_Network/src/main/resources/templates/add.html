@@ -8,20 +8,19 @@
 <h1>Add Seed</h1>
 
 <form method="post" style="max-width:600px;">
-  <div class="form-group">
-    <label th:for="name">Name</label>
-    <input class="form-control" th:field="${seed.name}" />
-    <span th:errors="${seed.name}" class="error"></span>
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label th:for="name">Name</label>-->
+<!--    <input class="form-control" th:field="${seed.name}" />-->
+<!--    <span th:errors="${seed.name}" class="error"></span>-->
+<!--  </div>-->
 
   <div class="form-group">
-    <label th:for="botanicalName">Botanical Names</label>
-    <select name="botanicalNameId">
-      <option th:each="botanicalName : ${botanicalNames}"
-              th:text="${botanicalName.name}"
-              th:value="${botanicalName.id}"></option>
-    </select>
-    <a th:href="@{'/botanicalNames/add'}">Add Botanical Names</a>
+    <label th:for="botanicalNames">Botanical Names</label>
+    <th:block th:each="botanicalName : ${botanicalNames}">
+      <input type="checkbox" name="botanicalNames" th:value="${botanicalName.id}">
+      <label th:text="${botanicalName.name}"></label>
+    </th:block>
+    <a th:href="@{'/add'}">Add Botanical Names</a>
   </div>
 
   <div class="form-group">
@@ -30,7 +29,7 @@
       <input type="checkbox" name="commonNames" th:value="${commonName.id}">
       <label th:text="${commonName.name}"></label>
     </th:block>
-    <a th:href="@{'/commonNames/add'}">Add Common Names</a>
+    <a th:href="@{'/add'}">Add Common Names</a>
   </div>
 
   <div class="form-group">
@@ -39,16 +38,17 @@
       <input type="checkbox" name="endangeredStatuses" th:value="${endangeredStatus.id}">
       <label th:text="${endangeredStatus.name}"></label>
     </th:block>
-    <a th:href="@{'/endangeredStatuses/add'}">Add Endangered Statuses</a>
+    <a th:href="@{'/add'}">Add Endangered Statuses</a>
   </div>
 
   <div class="form-group">
     <label th:for="plantHardinessZones">Plant Hardiness Zones</label>
-    <th:block th:each="plantHardinessZone : ${plantHardinessZones}">
-      <input type="checkbox" name="plantHardinessZones" th:value="${plantHardinessZone.id}">
-      <label th:text="${plantHardinessZone.name}"></label>
-    </th:block>
-    <a th:href="@{'/plantHardinessZones/add'}">Add Plant Hardiness Zones</a>
+    <select name="plantHardinessZoneId">
+      <option th:each="plantHardinessZone : ${plantHardinessZones}"
+              th:text="${plantHardinessZone}"
+              th:value="${plantHardinessZone.id}"></option>
+    </select>
+    <a th:href="@{'/add'}">Add Plant Hardiness Zone</a>
   </div>
 
   <div class="form-group">
@@ -57,7 +57,7 @@
       <input type="checkbox" name="seedQuantities" th:value="${seedQuantity.id}">
       <label th:text="${seedQuantity.name}"></label>
     </th:block>
-    <a th:href="@{'/seedQuantities/add'}">Add Seed Quantity</a>
+    <a th:href="@{'/add'}">Add Seed Quantity</a>
   </div>
 
   <div class="form-group">
@@ -66,7 +66,7 @@
       <input type="checkbox" name="seedSources" th:value="${seedSource.id}">
       <label th:text="${seedSource.name}"></label>
     </th:block>
-    <a th:href="@{'/seedSources/add'}">Add Seed Source</a>
+    <a th:href="@{'/add'}">Add Seed Source</a>
   </div>
 
   <input type="submit" value="Add Seed" />
