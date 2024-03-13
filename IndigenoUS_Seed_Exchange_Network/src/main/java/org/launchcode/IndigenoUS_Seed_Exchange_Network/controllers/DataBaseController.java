@@ -36,19 +36,19 @@ public class DataBaseController {
         }
     }
 
-    @GetMapping("/list/edit")
+    @GetMapping("/list/{id}/editSeed")
     public String seedEditForm(Model model, Seed seed, @PathVariable int id) {
         Optional optSeed = seedRepository.findById(id);
         if (optSeed.isPresent()) {
             seed = (Seed) optSeed.get();
             model.addAttribute("seed", seed);
-            return "edit";
+            return "editSeed";
         } else {
             return "404";
         }
     }
 
-    @PostMapping("/list/edit")
+    @PostMapping("/list/{id}/editSeed")
     public String updateExistingSeed(Model model, @PathVariable int id, Seed seed) {
 
         Optional<Seed> optSeed = seedRepository.findById(id);
@@ -70,11 +70,11 @@ public class DataBaseController {
         }
     }
 
-    @GetMapping("/dataBase/delete")
+    @GetMapping("/list/{id}/deleteSeed")
     public String deleteSeedById(@PathVariable int id) {
         seedRepository.deleteById(id);
 
-        return "delete";
+        return "deleteSeed";
     }
 
     @GetMapping("/add")

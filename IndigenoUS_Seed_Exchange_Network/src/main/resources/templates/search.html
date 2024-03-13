@@ -77,7 +77,11 @@
                     <a th:href="@{'/view/' + ${seed.id}}" th:text="${seed.id}"></a>
 
                     Botanical Name:
+                <ul th:each = "botanicalName : ${seed.botanicalName}">
+                    <li>
                     <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName}}" th:text="${seed.botanicalName}"></a>
+                    </li>
+                </ul>
                 </p>
                 <p>
                     Common Name:

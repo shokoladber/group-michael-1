@@ -76,8 +76,8 @@
 
 
                 </div>
-                <a th:href="@{'/list/' + 'editSeed'}" >Edit</a>
-                <a th:href="@{'/list/' + 'deleteSeed'}" >Delete</a>
+                <a th:href="@{'/list/' + ${seed.id} + '/editSeed'}" >Edit</a>
+                <a th:href="@{'/list/' + ${seed.id} + '/deleteSeed'}" >Delete</a>
 
             </div>
             <p th:unless="${seed}">No seeds found! (╯°□°）╯︵ ┻━┻ </p>
