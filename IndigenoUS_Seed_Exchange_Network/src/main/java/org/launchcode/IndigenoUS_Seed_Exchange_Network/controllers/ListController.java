@@ -1,16 +1,11 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.springframework.ui.Model;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BotanicalNameRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.CommonNameRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.EndangeredStatusRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.PlantHardinessZoneRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedQuantityRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedSourceRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,48 +17,35 @@ public class ListController {
 
     @Autowired
     private SeedRepository seedRepository;
-    @Autowired
-    private BotanicalNameRepository botanicalNameRepository;
-    @Autowired
-    private CommonNameRepository commonNameRepository;
-    @Autowired
-    private EndangeredStatusRepository endangeredStatusRepository;
-    @Autowired
-    private PlantHardinessZoneRepository plantHardinessZoneRepository;
-    @Autowired
-    private SeedQuantityRepository seedQuantityRepository;
-    @Autowired
-    private SeedSourceRepository seedSourceRepository;
-
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
 
         columnChoices.put("all", "All");
-        columnChoices.put("botanicalName", "BotanicalName");
-        columnChoices.put("commonName", "CommonName");
-        columnChoices.put("endangeredStatus", "EndangeredStatus");
-        columnChoices.put("plantHardinessZone", "PlantHardinessZone");
-        columnChoices.put("seedQuantity", "SeedQuantity");
-        columnChoices.put("seedSource", "SeedSource");
+        columnChoices.put("botanicalName", "Botanical Name");
+        columnChoices.put("commonName", "Common Name");
+        columnChoices.put("plantHardinessZone", "Plant Hardiness Zone");
+        columnChoices.put("seedQuantity", "Seed Quantity");
+        columnChoices.put("endangered", "Seed is Endangered");
+        columnChoices.put("isIndigenous", "Seed is from Indigenous Source");
 
     }
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("botanicalNames", botanicalNameRepository.findAll());
-        model.addAttribute("commonNames", commonNameRepository.findAll());
-        model.addAttribute("endangeredStatus", endangeredStatusRepository.findAll());
-        model.addAttribute("plantHardinessZone", plantHardinessZoneRepository.findAll());
-        model.addAttribute("seedQuantity", seedQuantityRepository.findAll());
-        model.addAttribute("seedSource", seedSourceRepository.findAll());
+        model.addAttribute("botanicalName", seedRepository.findAll());
+        model.addAttribute("commonName", seedRepository.findAll());
+        model.addAttribute("plantHardinessZone", seedRepository.findAll());
+        model.addAttribute("seedQuantity", seedRepository.findAll());
+        model.addAttribute("endangered", seedRepository.findAll());
+        model.addAttribute("isIndigenous", seedRepository.findAll());
         return "list";
     }
 
     @RequestMapping(value = "seeds")
     public String listSeedsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
         Iterable<Seed> seeds;
-        if (column.toLowerCase().equals("all")){
+        if (column.equalsIgnoreCase("all")){
             seeds = seedRepository.findAll();
             model.addAttribute("title", "All Seeds");
         } else {

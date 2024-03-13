@@ -1,14 +1,9 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
 import jakarta.validation.Valid;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.*;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BotanicalNameRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.CommonNameRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.EndangeredStatusRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.PlantHardinessZoneRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedQuantityRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedSourceRepository;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,94 +11,130 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.List;
 import java.util.Optional;
 
 
 @Controller
-@RequestMapping("dataBase")
 public class DataBaseController {
-
-    @Autowired
-    private BotanicalNameRepository botanicalNameRepository;
-    @Autowired
-    private CommonNameRepository commonNameRepository;
-    @Autowired
-    private EndangeredStatusRepository endangeredStatusRepository;
-    @Autowired
-    private PlantHardinessZoneRepository plantHardinessZoneRepository;
-    @Autowired
-    private SeedQuantityRepository seedQuantityRepository;
     @Autowired
     private SeedRepository seedRepository;
-    @Autowired
-    private SeedSourceRepository seedSourceRepository;
 
-    @GetMapping ({"/", ""})
-    public String index(Model model) {
+    @GetMapping ({"/dataBase"})
+    public String seed(Model model) {
         model.addAttribute("seeds", seedRepository.findAll());
         return "dataBase";
     }
+    @GetMapping("aSeed/{id}")
+    public String getaSeed(Model model, Seed seed, @PathVariable int id) {
+        Optional optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            seed = (Seed) optSeed.get();
+            model.addAttribute("seed", seed);
+            return "aSeed";
+        } else {
+            return "404";
+        }
+    }
 
-    @GetMapping("add")
+    @GetMapping("/list/{id}/editSeed")
+    public String seedEditForm(Model model, Seed seed, @PathVariable int id) {
+        Optional optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            seed = (Seed) optSeed.get();
+            model.addAttribute("seed", seed);
+            return "editSeed";
+        } else {
+            return "404";
+        }
+    }
+
+    @PostMapping("/list/{id}/editSeed")
+    public String updateExistingSeed(Model model, @PathVariable int id, Seed seed) {
+
+        Optional<Seed> optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            Seed existingSeed = optSeed.get();
+            // Update the existing blog with the new data
+            existingSeed.setBotanicalName(seed.getBotanicalName());
+            existingSeed.setCommonName(seed.getCommonName());
+            existingSeed.setSeedQuantity(seed.getSeedQuantity());
+            existingSeed.setEndangered(seed.getEndangered());
+            existingSeed.setSourceIsIndigenous(seed.getSourceIsIndigenous());
+            existingSeed.setPlantHardinessZone(seed.getPlantHardinessZone());
+            // Save the updated blog
+            seedRepository.save(existingSeed);
+            model.addAttribute("seeds", seedRepository.findAll());
+            return "seed";
+        } else {
+            return "404";
+        }
+    }
+
+    @GetMapping("/list/{id}/deleteSeed")
+    public String deleteSeedById(@PathVariable int id) {
+        seedRepository.deleteById(id);
+
+        return "deleteSeed";
+    }
+
+    @GetMapping("/add")
     public String displayAddSeedForm(Model model) {
-        model.addAttribute("title", "Add Seed");
-        model.addAttribute(new Seed());
-        model.addAttribute("botanicalName", botanicalNameRepository.findAll());
-        model.addAttribute("commonName", commonNameRepository.findAll());
-        model.addAttribute("endangeredStatus", endangeredStatusRepository.findAll());
-        model.addAttribute("plantHardinessZone", plantHardinessZoneRepository.findAll());
-        model.addAttribute("seedQuantity", seedQuantityRepository.findAll());
-        model.addAttribute("seedSource", seedSourceRepository.findAll());
+//        model.addAttribute("seed", "Add Seed");
+        model.addAttribute("seed", new Seed());
+//        model.addAttribute("seed", seedRepository.findAll());
         return "add";
     }
-
-    @PostMapping("add")
-    public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
-                                    Errors errors, Model model, @RequestParam int botanicalNameId, @RequestParam List<Integer> commonNames,
-                                     @RequestParam List<Integer> endangeredStatuses, @RequestParam List<Integer> plantHardinessZones,
-                                     @RequestParam List<Integer> seedSources, @RequestParam List<Integer> seedQuanitities) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Seed");
+    
+    @PostMapping("/add")
+    public String handleSeedPostForm(Model model, @ModelAttribute @Valid Seed seed, Errors errors){
+        model.addAttribute("seed", seed);
+        if(errors.hasErrors()){
             return "add";
         }
-        BotanicalName botanicalName = botanicalNameRepository.findById(botanicalNameId).orElse(new BotanicalName());
-        newSeed.setBotanicalName(botanicalName);
 
-        List<CommonName> commonNameObjs = (List<CommonName>) commonNameRepository.findAllById(commonNames);
-        newSeed.setCommonNames(commonNameObjs);
-        seedRepository.save(newSeed);
-
-        List<EndangeredStatus> endangeredStatusObjs = (List<EndangeredStatus>) endangeredStatusRepository.findAllById(endangeredStatuses);
-        newSeed.setEndangeredStatuses(endangeredStatusObjs);
-        seedRepository.save(newSeed);
-
-        List<PlantHardinessZone> plantHardinessZoneObjs = (List<PlantHardinessZone>) plantHardinessZoneRepository.findAllById(plantHardinessZones);
-        newSeed.setPlantHardinessZones(plantHardinessZoneObjs);
-        seedRepository.save(newSeed);
-
-        List<SeedSource> seedSourceObjs = (List<SeedSource>) seedSourceRepository.findAllById(seedSources);
-        newSeed.setSeedSources(seedSourceObjs);
-        seedRepository.save(newSeed);
-
-        List<SeedQuantity> seedQuantityObjs = (List<SeedQuantity>) seedQuantityRepository.findAllById(seedQuanitities);
-
-        newSeed.setSeedQuantities(seedQuantityObjs);
-        seedRepository.save(newSeed);
-
-        return "redirect:";
-    }
-
-    @GetMapping("view/{seedId}")
-    public String displayViewSeed(Model model, @PathVariable int seedId) {
-        Optional optSeed = seedRepository.findById(seedId);
-        if (optSeed.isPresent()) {
-            Seed seed = (Seed) optSeed.get();
-            model.addAttribute("seed", seed);
-            return "view";
-        } else {
-            return "redirect:../";
-        }
+        seedRepository.save(seed);
+        model.addAttribute("seeds", seedRepository.findAll());
+        return "view";
     }
 }
+//    public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
+//                                    Errors errors, Model model, @PathVariable int id) {
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("seed", "Add Seed");
+//            return "add";
+//        }
+//
+//        Seed botanicalName = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setBotanicalName(String.valueOf(botanicalName));
+//
+//        Seed commonName = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setCommonName(String.valueOf(commonName));
+//
+//        Seed seedQuantity = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setSeedQuantity(Integer.valueOf(String.valueOf(seedQuantity)));
+//
+//        Seed plantHardinessZone = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setPlantHardinessZone(new String[]{String.valueOf(plantHardinessZone)});
+//
+//        Seed isEndangered = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setEndangered(Boolean.valueOf(String.valueOf(isEndangered)));
+//
+//        Seed isIndigenous = seedRepository.findById(id).orElse(new Seed());
+//        newSeed.setSourceIsIndigenous(Boolean.valueOf(String.valueOf(isIndigenous)));
+//
+//        return "redirect:";
+//    }
+
+//    @GetMapping("/seed/{seedId}")
+//    public String displayViewSeed(Model model, Seed seed, @PathVariable int seedId) {
+//        Optional<Seed> optSeed = seedRepository.findById(seedId);
+//        if (optSeed.isPresent()) {
+//            seed = optSeed.get();
+//            model.addAttribute("seed", seed);
+//            return "view";
+//        } else {
+//            return "redirect:../";
+//        }
+//   }
+//}
