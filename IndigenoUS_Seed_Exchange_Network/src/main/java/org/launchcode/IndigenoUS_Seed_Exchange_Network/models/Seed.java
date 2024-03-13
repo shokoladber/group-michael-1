@@ -12,9 +12,11 @@ import lombok.Getter;
 @Entity
 public class Seed {
 
+    //primary key annotations (@Id , @GeneratedValue) auto generate the id field. Below are columns.
     @Id
     @GeneratedValue
     private int id;
+
 
     @Getter
     @NotBlank(message = "Must include botanical name")

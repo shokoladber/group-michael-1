@@ -2,6 +2,7 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
+import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -20,7 +20,7 @@ public class DataBaseController {
     private SeedRepository seedRepository;
 
     @GetMapping ({"/dataBase"})
-    public String dataBase(Model model) {
+    public String seed(Model model) {
         model.addAttribute("seeds", seedRepository.findAll());
         return "dataBase";
     }
@@ -32,7 +32,7 @@ public class DataBaseController {
         model.addAttribute("seed", seedRepository.findAll());
         return "add";
     }
-
+    
     @GetMapping("/add")
     public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,
                                     Errors errors, Model model, @PathVariable int id) {
@@ -65,9 +65,9 @@ public class DataBaseController {
 
     @GetMapping("/seed/{seedId}")
     public String displayViewSeed(Model model, Seed seed, @PathVariable int seedId) {
-        Optional optSeed = seedRepository.findById(seedId);
+        Optional<Seed> optSeed = seedRepository.findById(seedId);
         if (optSeed.isPresent()) {
-            seed = (Seed) optSeed.get();
+            seed = optSeed.get();
             model.addAttribute("seed", seed);
             return "view";
         } else {

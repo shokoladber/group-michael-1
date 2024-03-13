@@ -8,7 +8,7 @@ public class SeedData {
 
         ArrayList<Seed> results = new ArrayList<>();
 
-        if (value.toLowerCase().equals("all")){
+        if (value.equalsIgnoreCase("all")){
             return (ArrayList<Seed>) allSeeds;
         }
 
@@ -29,20 +29,14 @@ public class SeedData {
     }
 
     public static String getFieldValue(Seed seed, String fieldName){
-        String theValue;
-       if (fieldName.equals("botanicalName")){
-            theValue = seed.getBotanicalName().toString();
-        } else if (fieldName.equals("commonName")){
-            theValue = seed.getCommonName().toString();
-        } else if (fieldName.equals("isEndangered")){
-            theValue = seed.getEndangered().toString();
-        } else if (fieldName.equals("plantHardinessZone")){
-            theValue = seed.getPlantHardinessZone().toString();
-        } else if (fieldName.equals("seedQuantity")){
-            theValue = seed.getSeedQuantity().toString();
-        } else {
-        theValue = seed.getSourceIsIndigenous().toString();
-    }
+        String theValue = switch (fieldName) {
+            case "botanicalName" -> seed.getBotanicalName().toString();
+            case "commonName" -> seed.getCommonName().toString();
+            case "isEndangered" -> seed.getEndangered().toString();
+            case "plantHardinessZone" -> seed.getPlantHardinessZone().toString();
+            case "seedQuantity" -> seed.getSeedQuantity().toString();
+            default -> seed.getSourceIsIndigenous().toString();
+        };
 
         return theValue;
     }

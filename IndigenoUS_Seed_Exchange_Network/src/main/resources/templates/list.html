@@ -4,8 +4,6 @@
 </head>
 <body>
 
-<div th:replace="~{fragments :: page-header}"></div>
-
 <div class="container body-content">
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
     <h2 class = "centered">View Seeds By Characteristics</h2>
@@ -13,7 +11,6 @@
 
 <table class="centeredTable">
     <tr>
-        <th>All</th>
         <th>Botanical Name</th>
         <th>Common Name</th>
         <th>Endangered</th>
@@ -25,7 +22,7 @@
     <tr>
         <td>
             <li>
-                <a th:href="@{/list/seeds(column='All',value='View All')}">View All</a>
+                <a th:href="@{/list/seeds(column='All',value='View All')}">All</a>
             </li>
         </td>
         <td>

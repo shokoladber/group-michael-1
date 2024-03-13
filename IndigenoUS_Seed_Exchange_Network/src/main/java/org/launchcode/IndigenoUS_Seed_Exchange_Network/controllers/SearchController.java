@@ -3,7 +3,6 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.controllers;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Seed;
 import org.springframework.ui.Model;
-import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.SeedData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +27,7 @@ public class SearchController {
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
         Iterable<Seed> seeds;
-        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+        if (searchTerm.toLowerCase().equals("all") || searchTerm.isEmpty()){
             seeds = seedRepository.findAll();
         } else {
             seeds = findByColumnAndValue(searchType, searchTerm, seedRepository.findAll());

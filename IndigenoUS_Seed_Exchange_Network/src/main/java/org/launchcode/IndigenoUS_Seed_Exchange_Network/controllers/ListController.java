@@ -5,13 +5,13 @@ import org.springframework.ui.Model;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.SeedData;
 import java.util.HashMap;
 @Controller
-@RequestMapping(value = "list")
 public class ListController {
 
     @Autowired
@@ -21,19 +21,30 @@ public class ListController {
     public ListController () {
 
         columnChoices.put("all", "All");
-        columnChoices.put("seed", "Seed");
+        columnChoices.put("botanicalName", "Botanical Name");
+        columnChoices.put("commonName", "Common Name");
+        columnChoices.put("plantHardinessZone", "Plant Hardiness Zone");
+        columnChoices.put("seedQuantity", "Seed Quantity");
+        columnChoices.put("endangered", "Seed is Endangered");
+        columnChoices.put("isIndigenous", "Seed has Indigenous Source");
+
     }
 
-    @RequestMapping("")
+    @GetMapping("/list")
     public String list(Model model) {
-        model.addAttribute("seeds", seedRepository.findAll());
+        model.addAttribute("botanicalName", seedRepository.findAll());
+        model.addAttribute("commonName", seedRepository.findAll());
+        model.addAttribute("plantHardinessZone", seedRepository.findAll());
+        model.addAttribute("seedQuantity", seedRepository.findAll());
+        model.addAttribute("endangered", seedRepository.findAll());
+        model.addAttribute("isIndigenous", seedRepository.findAll());
         return "list";
     }
 
     @RequestMapping(value = "seeds")
     public String listSeedsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
         Iterable<Seed> seeds;
-        if (column.toLowerCase().equals("all")){
+        if (column.equalsIgnoreCase("all")){
             seeds = seedRepository.findAll();
             model.addAttribute("title", "All Seeds");
         } else {

@@ -1,76 +1,119 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="~{fragments :: head}"></head>
-<body class="container body-content">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link th:href="@{/css/newpost.css}" rel="stylesheet" />
+  <title></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Indigenous Seed Exchange Network</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/about">About Us</a>
+        </li>
 
-<nav th:replace="~{fragments :: page-header}"></nav>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
 
-<h1>Add Seed</h1>
+        <li class="nav-item">
+          <a class="nav-link" href="/application">Join Us</a>
+        </li>
 
-<form method="post" style="max-width:600px;">
-<!--  <div class="form-group">-->
-<!--    <label th:for="name">Name</label>-->
-<!--    <input class="form-control" th:field="${seed.name}" />-->
-<!--    <span th:errors="${seed.name}" class="error"></span>-->
-<!--  </div>-->
+        <li class="nav-item">
+          <a class="nav-link" href="/donate">Donate</a>
+        </li>
 
-  <div class="form-group">
-    <label th:for="botanicalNames">Botanical Names</label>
-    <th:block th:each="botanicalName : ${botanicalNames}">
-      <input type="checkbox" name="botanicalNames" th:value="${botanicalName.id}">
-      <label th:text="${botanicalName.name}"></label>
-    </th:block>
-    <a th:href="@{'/add'}">Add Botanical Names</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+      </ul>
+    </div>
   </div>
+</nav>
+<div class="banner">
+  <br/>
+  <br/>
+  <br/>
+  <h1> Add Seeds </h1>
+  <br/>
+  <br/>
+  <br/>
+</div>
+</br>
+</br>
 
-  <div class="form-group">
-    <label th:for="commonNames">Common Names</label>
-    <th:block th:each="commonName : ${commonNames}">
-      <input type="checkbox" name="commonNames" th:value="${commonName.id}">
-      <label th:text="${commonName.name}"></label>
-    </th:block>
-    <a th:href="@{'/add'}">Add Common Names</a>
-  </div>
+<h2> New Seed </h2>
+</br>
+</br>
+<div class="container">
+  <form method="post" enctype="multipart/form-data">
+    <label>Botanical Name:</label>
+    <input type="text" th:field="${seed.botanicalName}">
+    <span th:errors="${seed.botanicalName}"></span>
 
-  <div class="form-group">
-    <label th:for="endangeredStatuses">Endangered Statuses</label>
-    <th:block th:each="endangeredStatus : ${endangeredStatuses}">
-      <input type="checkbox" name="endangeredStatuses" th:value="${endangeredStatus.id}">
-      <label th:text="${endangeredStatus.name}"></label>
-    </th:block>
-    <a th:href="@{'/add'}">Add Endangered Statuses</a>
-  </div>
+    <label>Common Name:</label>
+    <input type="text" th:field="${seed.commonName}">
+    <span th:errors="${seed.commonName}"></span>
 
-  <div class="form-group">
-    <label th:for="plantHardinessZones">Plant Hardiness Zones</label>
-    <select name="plantHardinessZoneId">
-      <option th:each="plantHardinessZone : ${plantHardinessZones}"
-              th:text="${plantHardinessZone}"
-              th:value="${plantHardinessZone.id}"></option>
-    </select>
-    <a th:href="@{'/add'}">Add Plant Hardiness Zone</a>
-  </div>
+    <label>Seed Quantity:</label>
+    <input type="text" th:field="${seed.seedQuantity}">
+    <span th:errors="${seed.seedQuantity}"></span>
 
-  <div class="form-group">
-    <label th:for="seedQuantities">Seed Quantities</label>
-    <th:block th:each="seedQuantity : ${seedQuantities}">
-      <input type="checkbox" name="seedQuantities" th:value="${seedQuantity.id}">
-      <label th:text="${seedQuantity.name}"></label>
-    </th:block>
-    <a th:href="@{'/add'}">Add Seed Quantity</a>
-  </div>
+    <label>Plant Hardiness Zone:</label>
+    <input type="text" th:field="${seed.plantHardinessZone}">
+    <span th:errors="${seed.plantHardinessZone}"></span>
 
-  <div class="form-group">
-    <label th:for="seedSources">Seed Sources</label>
-    <th:block th:each="seedSource : ${seedSources}">
-      <input type="checkbox" name="seedSources" th:value="${seedSource.id}">
-      <label th:text="${seedSource.name}"></label>
-    </th:block>
-    <a th:href="@{'/add'}">Add Seed Source</a>
-  </div>
+    <label>Endangered:</label>
+    <input type="text" th:field="${seed.endangered}">
+    <span th:errors="${seed.endangered}"></span>
 
-  <input type="submit" value="Add Seed" />
+    <label>Indigenous Sourced:</label>
+    <input type="text" th:field="${seed.isIndigenous}">
+    <span th:errors="${seed.isIndigenous}"></span>
+
+    <input type="submit" value="Submit">
+</div>
 </form>
-
+<br/>
+<br/>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
+<footer>
+  <h4 style="color: black; font-size: 12px">
+    <script src="https://kit.fontawesome.com/1f5ac7f864.js" crossorigin="anonymous"></script>
+    <p class="copyright">© Anxious Syntax Squad 2024
+      <span class="social">
+
+                <a href="https://www.facebook.com/groups/1939160426313198"
+                <i class="fa-brands fa-facebook"</i>
+        </a>
+
+        <a href="https://www.instagram.com"
+                <i class="fa-brands fa-instagram"</i>
+        </a>
+
+        <a href="https://www.linkedin.com"
+                <i class="fa-brands fa-linkedin"</i>
+        </a>
+
+        <a href="https://twitter.com/"
+                <i class="fa-brands fa-twitter"></i>
+        </a>
+
+          </span>
+    </p>
+
+</footer>
 </html>
