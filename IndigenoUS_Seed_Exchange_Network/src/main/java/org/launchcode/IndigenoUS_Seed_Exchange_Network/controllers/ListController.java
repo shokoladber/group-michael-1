@@ -26,7 +26,7 @@ public class ListController {
         columnChoices.put("plantHardinessZone", "Plant Hardiness Zone");
         columnChoices.put("seedQuantity", "Seed Quantity");
         columnChoices.put("endangered", "Seed is Endangered");
-        columnChoices.put("isIndigenous", "Seed has Indigenous Source");
+        columnChoices.put("isIndigenous", "Seed is from Indigenous Source");
 
     }
 

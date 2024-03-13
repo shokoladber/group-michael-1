@@ -17,49 +17,58 @@ public class Seed {
     @GeneratedValue
     private int id;
 
-
-    @Getter
     @NotBlank(message = "Must include botanical name")
     @Size(min = 3, max = 100, message = "Botanical name must be between 3 and 100 characters")
     private String botanicalName;
-
-    @Getter
     @NotBlank(message = "Must include common name")
     @Size(min = 3, max = 100, message = "Common name must be between 3 and 100 characters")
     private String commonName;
-
-    @Getter
     private Integer seedQuantity;
-
-    @Getter
     private Boolean isEndangered = true;
-
-    @Getter
     private Boolean sourceIsIndigenous = true;
-
-    @Getter
     private String[] plantHardinessZone = {"1a", "1b", "2a", "2b", "3a", "3b", "4a", "4b", "5a", "5b", "6a", "6b",
             "7a", "7b", "8a", "8b", "9a", "9b", "10a", "10b", "11a", "11b", "12a", "12b", "13a", "13b"};
 
     public Seed() {}
 
 
+
     //Creating Object Seed
     public Seed(String botanicalName, String commonName, Boolean endangered,
-                String[] plantHardinessZone, Integer seedQuantity, Boolean isIndigenous) {
+                String[] plantHardinessZone, Integer seedQuantity, Boolean sourceIsIndigenous) {
         this();
         this.botanicalName = botanicalName;
         this.commonName = commonName;
         this.plantHardinessZone = plantHardinessZone;
         this.seedQuantity = seedQuantity;
         this.isEndangered = endangered;
-        this.sourceIsIndigenous = isIndigenous;
+        this.sourceIsIndigenous = sourceIsIndigenous;
     }
 
 
     //Getters and Setters
     public int getId() {
         return id;
+    }
+
+    public String getBotanicalName() {
+        return botanicalName;
+    }
+
+    public String getCommonName() {
+        return commonName;
+    }
+
+    public Integer getSeedQuantity() {
+        return seedQuantity;
+    }
+
+    public Boolean getSourceIsIndigenous() {
+        return sourceIsIndigenous;
+    }
+
+    public String[] getPlantHardinessZone() {
+        return plantHardinessZone;
     }
 
     public void setBotanicalName(String botanicalName) {

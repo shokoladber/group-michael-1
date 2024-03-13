@@ -12,19 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.launchcode.IndigenoUS_Seed_Exchange_Network.models.SeedData.findByColumnAndValue;
 
 @Controller
-@RequestMapping("search")
 public class SearchController {
 
     @Autowired
     private SeedRepository seedRepository;
 
-    @RequestMapping("")
+    @RequestMapping("/search")
     public String search(Model model) {
         model.addAttribute("columns", ListController.columnChoices);
         return "search";
     }
 
-    @PostMapping("results")
+    @PostMapping("/search/results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
         Iterable<Seed> seeds;
         if (searchTerm.toLowerCase().equals("all") || searchTerm.isEmpty()){
