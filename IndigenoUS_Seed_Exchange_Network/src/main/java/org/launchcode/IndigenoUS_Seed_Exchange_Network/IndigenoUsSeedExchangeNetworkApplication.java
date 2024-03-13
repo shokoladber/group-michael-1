@@ -11,4 +11,5 @@ IndigenoUsSeedExchangeNetworkApplication {
 		SpringApplication.run(IndigenoUsSeedExchangeNetworkApplication.class, args);
 	}
 
+
 }

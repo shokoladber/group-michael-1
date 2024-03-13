@@ -3,6 +3,9 @@ package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
@@ -17,6 +20,9 @@ public class User {
     private String password;
 
     private boolean isAdmin;
+
+    @Getter
+    private boolean verified;
 
 
 
@@ -41,7 +47,8 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        this.password = encoder.encode(password);
     }
 
     public boolean getIsAdmin() {
@@ -50,5 +57,9 @@ public class User {
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }

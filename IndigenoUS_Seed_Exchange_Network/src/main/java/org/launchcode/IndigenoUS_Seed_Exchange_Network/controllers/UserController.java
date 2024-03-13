@@ -6,6 +6,7 @@ import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.UserRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,8 @@ public class UserController {
     @Autowired
     private BlogRepository blogRepository;
 
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 
     @GetMapping("/login")
     public String showLoginForm (Model model) {
@@ -37,13 +40,13 @@ public class UserController {
             return "login";
         }
 
-        if (user.getEmail().equals("rtypien@gmail.com") && user.getPassword().equals("1234")){
+        if (user.getEmail().equals("rtypien@gmail.com") && passwordEncoder.matches("1234",user.getPassword())){
             return "redirect:/admin";
         }
 
         Optional<User> storedUser = userRepository.findByEmail(user.getEmail());
 
-        if (storedUser.isPresent() && storedUser.get().getPassword().equals(user.getPassword())){
+        if (storedUser.isPresent() && passwordEncoder.matches(user.getPassword(), storedUser.get().getPassword())){
             return "redirect:/user-dashboard";
         } else {
             model.addAttribute("error", "Invalid Log in information");
@@ -64,7 +67,7 @@ public class UserController {
             return "new-blog";
         }
         blogRepository.save(blog);
-        return "redirect:/user/dashboard";
+        return "redirect:/user-dashboard";
     }
 }
 
