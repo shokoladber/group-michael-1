@@ -24,6 +24,58 @@ public class DataBaseController {
         model.addAttribute("seeds", seedRepository.findAll());
         return "dataBase";
     }
+    @GetMapping("aSeed/{id}")
+    public String getaSeed(Model model, Seed seed, @PathVariable int id) {
+        Optional optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            seed = (Seed) optSeed.get();
+            model.addAttribute("seed", seed);
+            return "aSeed";
+        } else {
+            return "404";
+        }
+    }
+
+    @GetMapping("/list/edit")
+    public String seedEditForm(Model model, Seed seed, @PathVariable int id) {
+        Optional optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            seed = (Seed) optSeed.get();
+            model.addAttribute("seed", seed);
+            return "edit";
+        } else {
+            return "404";
+        }
+    }
+
+    @PostMapping("/list/edit")
+    public String updateExistingSeed(Model model, @PathVariable int id, Seed seed) {
+
+        Optional<Seed> optSeed = seedRepository.findById(id);
+        if (optSeed.isPresent()) {
+            Seed existingSeed = optSeed.get();
+            // Update the existing blog with the new data
+            existingSeed.setBotanicalName(seed.getBotanicalName());
+            existingSeed.setCommonName(seed.getCommonName());
+            existingSeed.setSeedQuantity(seed.getSeedQuantity());
+            existingSeed.setEndangered(seed.getEndangered());
+            existingSeed.setSourceIsIndigenous(seed.getSourceIsIndigenous());
+            existingSeed.setPlantHardinessZone(seed.getPlantHardinessZone());
+            // Save the updated blog
+            seedRepository.save(existingSeed);
+            model.addAttribute("seeds", seedRepository.findAll());
+            return "seed";
+        } else {
+            return "404";
+        }
+    }
+
+    @GetMapping("/dataBase/delete")
+    public String deleteSeedById(@PathVariable int id) {
+        seedRepository.deleteById(id);
+
+        return "delete";
+    }
 
     @GetMapping("/add")
     public String displayAddSeedForm(Model model) {
@@ -42,7 +94,7 @@ public class DataBaseController {
 
         seedRepository.save(seed);
         model.addAttribute("seeds", seedRepository.findAll());
-        return "seed";
+        return "view";
     }
 }
 //    public String processAddSeedForm(@ModelAttribute @Valid Seed newSeed,

@@ -35,6 +35,10 @@
           <a class="nav-link" href="/donate">Donate</a>
         </li>
 
+          <li class="nav-item">
+              <a class="nav-link" href="/dataBase">Data Base</a>
+          </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
@@ -77,16 +81,48 @@
     <span th:errors="${seed.seedQuantity}"></span>
 
     <label>Plant Hardiness Zone:</label>
-      <select id = "plantHardinessZone"></select>
-<!--    <input type="text" th:field="${seed.plantHardinessZone}">-->
+    <select name="plantHardinessZone" th:field="${seed.plantHardinessZone}">
+        <option value="1a">1a</option>
+        <option value="1b">1b</option>
+        <option value="2a">2a</option>
+        <option value="2b">2b</option>
+        <option value="3a">3a</option>
+        <option value="3b">3b</option>
+        <option value="4a">4a</option>
+        <option value="4b">4b</option>
+        <option value="5a">5a</option>
+        <option value="5b">5b</option>
+        <option value="6a">6a</option>
+        <option value="6b">6b</option>
+        <option value="7a">7a</option>
+        <option value="7b">7b</option>
+        <option value="8a">8a</option>
+        <option value="8b">8b</option>
+        <option value="9a">9a</option>
+        <option value="9b">9b</option>
+        <option value="10a">10a</option>
+        <option value="10b">10b</option>
+        <option value="11a">11a</option>
+        <option value="11b">11b</option>
+        <option value="12a">12a</option>
+        <option value="12b">12b</option>
+        <option value="13a">13a</option>
+        <option value="13b">13b</option>
+    </select>
     <span th:errors="${seed.plantHardinessZone}"></span>
 
-    <label>Endangered:</label>
-    <input type="text" th:field="${seed.endangered}">
+    <label>Is the Seed Endangered?</label>
+      <select name="endangered" th:field="${seed.endangered}">
+          <option value="true">Endangered</option>
+          <option value="false">Not Endangered</option>
+      </select>
     <span th:errors="${seed.endangered}"></span>
 
-    <label>Indigenous Sourced:</label>
-    <input type="text" th:field="${seed.sourceIsIndigenous}">
+    <label>Is the Seed From an Indigenous Source?</label>
+      <select name="sourceIsIndigenous" th:field="${seed.sourceIsIndigenous}">
+          <option value="true">From Indigenous Source</option>
+          <option value="false">Not from Indigenous Source</option>
+      </select>
     <span th:errors="${seed.sourceIsIndigenous}"></span>
 
     <input type="submit" value="Submit">
@@ -121,6 +157,5 @@
 
           </span>
     </p>
-
 </footer>
 </html>

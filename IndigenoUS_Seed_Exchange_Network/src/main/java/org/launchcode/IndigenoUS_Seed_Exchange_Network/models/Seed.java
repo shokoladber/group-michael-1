@@ -8,6 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
+import javax.swing.*;
+import java.util.Arrays;
+
 
 @Entity
 public class Seed {
@@ -30,7 +33,6 @@ public class Seed {
             "7a", "7b", "8a", "8b", "9a", "9b", "10a", "10b", "11a", "11b", "12a", "12b", "13a", "13b"};
 
     public Seed() {}
-
 
 
     //Creating Object Seed

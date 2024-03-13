@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.SeedData;
 import java.util.HashMap;
 @Controller
+@RequestMapping(value = "list")
 public class ListController {
 
     @Autowired
@@ -30,7 +31,7 @@ public class ListController {
 
     }
 
-    @GetMapping("/list")
+    @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("botanicalName", seedRepository.findAll());
         model.addAttribute("commonName", seedRepository.findAll());
