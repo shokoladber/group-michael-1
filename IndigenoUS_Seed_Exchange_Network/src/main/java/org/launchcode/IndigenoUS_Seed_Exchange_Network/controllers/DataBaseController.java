@@ -32,7 +32,7 @@ public class DataBaseController {
             model.addAttribute("seed", seed);
             return "aSeed";
         } else {
-            return "404";
+            return "redirect:/";
         }
     }
 
@@ -44,7 +44,7 @@ public class DataBaseController {
             model.addAttribute("seed", seed);
             return "editSeed";
         } else {
-            return "404";
+            return "redirect:/";
         }
     }
 
@@ -54,19 +54,17 @@ public class DataBaseController {
         Optional<Seed> optSeed = seedRepository.findById(id);
         if (optSeed.isPresent()) {
             Seed existingSeed = optSeed.get();
-            // Update the existing blog with the new data
             existingSeed.setBotanicalName(seed.getBotanicalName());
             existingSeed.setCommonName(seed.getCommonName());
             existingSeed.setSeedQuantity(seed.getSeedQuantity());
             existingSeed.setEndangered(seed.getEndangered());
             existingSeed.setSourceIsIndigenous(seed.getSourceIsIndigenous());
             existingSeed.setPlantHardinessZone(seed.getPlantHardinessZone());
-            // Save the updated blog
             seedRepository.save(existingSeed);
             model.addAttribute("seeds", seedRepository.findAll());
             return "seed";
         } else {
-            return "404";
+            return "redirect:/";
         }
     }
 

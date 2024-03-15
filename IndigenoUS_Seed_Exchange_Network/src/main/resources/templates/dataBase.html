@@ -65,42 +65,9 @@
         <button style="background-color: #EAECEE; color: black;">Add Seed</button>
     </a>
 </div>
-
-<!--</br>-->
-<!--</br>-->
 <div class="container">
     <div th:if="${seeds.size()} > 0">
         <th:block th:each="seed:${seeds}">
-<!--            <div th:fragment="seed">-->
-<!--                <h2> <a th:href="@{'/add/' + ${seed.id}}"-->
-<!--                        th:text="${seed.commonName}">Seed</a>-->
-<!--                </h2>-->
-<!--                <table>-->
-<!--                <tr>-->
-<!--                    <a th:text="${seed.botanicalName}">Botanical Name: </a>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                <a th:text="${seed.commonName}">Common Name: </a>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                <a th:text="${seed.seedQuantity}">Seed Quantity: </a>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                    <a th:text="${seed.endangered}">Endangered: </a>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                    <a th:text="${seed.plantHardinessZone}">Plant Hardiness Zone: </a>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                    <a :text="${seed.sourceIsIndigenous}">Indigenous: </a>-->
-<!--                </tr>-->
-<!--                </table>-->
-<!--            </div>-->
         </th:block>
     </div>
     <p th:unless="${seeds.size()} > 0">No Seeds found!</p>

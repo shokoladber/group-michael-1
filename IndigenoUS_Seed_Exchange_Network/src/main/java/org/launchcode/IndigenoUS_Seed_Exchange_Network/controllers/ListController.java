@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.SeedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,7 +26,7 @@ public class ListController {
         columnChoices.put("plantHardinessZone", "Plant Hardiness Zone");
         columnChoices.put("seedQuantity", "Seed Quantity");
         columnChoices.put("endangered", "Seed is Endangered");
-        columnChoices.put("isIndigenous", "Seed is from Indigenous Source");
+        columnChoices.put("sourceIsIndigenous", "Seed is from Indigenous Source");
 
     }
 
@@ -38,7 +37,7 @@ public class ListController {
         model.addAttribute("plantHardinessZone", seedRepository.findAll());
         model.addAttribute("seedQuantity", seedRepository.findAll());
         model.addAttribute("endangered", seedRepository.findAll());
-        model.addAttribute("isIndigenous", seedRepository.findAll());
+        model.addAttribute("sourceIsIndigenous", seedRepository.findAll());
         return "list";
     }
 
