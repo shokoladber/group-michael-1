@@ -46,30 +46,29 @@
     </nav>
 
     <h1> IndigenoUS Seed Exchange Network Data Base </h1>
-    <!-- check your slashes, check your single ticks, has to be in order, wake up eyeballs mcgee -->
     <form th:action="@{'/dataBase/' + ${seed.id}} + '/edit'" th:object="${dataBase}" method="POST">
         <div th:if="${dataBase}">
             <div th:fragment="dataBase">
-                <h2> <a th:href="@{'/dataBase/' + ${seed.id} + '/edit'}"
-                        th:text="${seed.title}">Title</a>
+                <h2> <a th:href="@{'/dataBase/' + ${dataBase.id} + '/edit'}"
+                        th:text="${dataBase.title}">Title</a>
                 </h2>
                 <p>Botanical Name</p>
-                <p> <input type="text" name="botanicalName" th:field="*{botanicalName}"/></p>
+                <p> <input type="text" name="Botanical Name" th:field="*{botanicalName}"/></p>
 
                 <p>Common Name</p>
-                <p> <input type="text" name="commonName" th:field="*{commonName}"/></p>
+                <p> <input type="text" name="Common Name" th:field="*{commonName}"/></p>
 
                 <p>Seed Quantity</p>
-                <p> <input type="text" name="seedQuantity" th:field="*{seedQuantity}"/></p>
+                <p> <input type="text" name="Seed Quantity" th:field="*{seedQuantity}"/></p>
 
                 <p>Endangered</p>
-                <p> <input type="text" name="endangered" th:field="*{endangered}"/></p>
+                <p> <input type="text" name="Endangered" th:field="*{endangered}"/></p>
 
                 <p>Indigenous Source</p>
-                <p> <input type="text" name="sourceIsIndigenous" th:field="*{sourceIsIndigenous}"/></p>
+                <p> <input type="text" name="Source is Indigenous" th:field="*{sourceIsIndigenous}"/></p>
 
                 <p>Plant Hardiness Zone</p>
-                <p> <input type="text" name="plantHardinessZone" th:field="*{plantHardinessZone}"/></p>
+                <p> <input type="text" name="Plant Hardiness Zone" th:field="*{plantHardinessZone}"/></p>
             </div>
             <input type="submit" value="Submit">
         </div>

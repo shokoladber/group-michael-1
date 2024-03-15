@@ -57,10 +57,10 @@
         <th>All Seeds</th>
         <th>Botanical Name</th>
         <th>Common Name</th>
+        <th>Seed Quantity</th>
         <th>Endangered</th>
         <th>Sourced from Indigenous</th>
         <th>Plant Hardiness Zone</th>
-        <th>Seed Quantity</th>
     </tr>
     </tbody>
     <tr>
@@ -71,32 +71,32 @@
         </td>
         <td>
             <li th:each="botanicalName : ${botanicalName}">
-                <a th:href="@{/list/seeds(column=botanicalName,value=${botanicalName})}" th:text="${botanicalName}"></a>
+                <a th:text="${botanicalName.botanicalName}"></a>
             </li>
         </td>
         <td>
             <li th:each="commonName : ${commonName}">
-                <a th:href="@{/list/seeds(column=commonName,value=${commonName})}" th:text="${commonName}"></a>
+                <a th:text="${commonName.commonName}"></a>
             </li>
         </td>
             <td>
                 <li th:each="seedQuantity : ${seedQuantity}">
-                    <a th:href="@{/list/seeds(column=seedQuantity,value=${seedQuantity})}" th:text="${seedQuantity}"></a>
+                    <a th:text="${seedQuantity.seedQuantity}"></a>
                 </li>
             </td>
         <td>
             <li th:each="isEndangered : ${endangered}">
-                <a th:href="@{/list/seeds(column=endangered,value=${endangered})}" th:text="${endangered}"></a>
+                <a th:text="${isEndangered.endangered}"></a>
             </li>
         </td>
         <td>
             <li th:each="sourceIsIndigenous : ${sourceIsIndigenous}">
-                <a th:href="@{/list/seeds(column=sourceIsIndigenous,value=${sourceIsIndigenous})}" th:text="${sourceIsIndigenous}"></a>
+                <a th:text="${sourceIsIndigenous.sourceIsIndigenous}"></a>
             </li>
         </td>
         <td>
-            <li th:each="plantHardinessZone : ${plantHardinessZones}">
-                <a th:href="@{/list/seeds(column=plantHardinessZone,value=${plantHardinessZone})}" th:text="${plantHardinessZone}"></a>
+            <li th:each="plantHardinessZone : ${plantHardinessZone}">
+                <a th:text="${plantHardinessZone.plantHardinessZone}"></a>
             </li>
         </td>
     </tr>
