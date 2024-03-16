@@ -72,3 +72,4 @@ public class Blog {
         this.imageUrl = imageUrl;
     }
 }
+
