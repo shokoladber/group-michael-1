@@ -6,7 +6,7 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+          <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
         </processorPath>
         <module name="IndigenoUS_Seed_Exchange_Network.main" />
       </profile>
@@ -15,6 +15,7 @@
       <module name="demo" target="17" />
       <module name="demo.main" target="17" />
       <module name="demo.test" target="17" />
+      <module name="group-michael-1.IndigenoUS_Seed_Exchange_Network" target="17" />
       <module name="IndigenoUS-Seed-Exchange-Network" target="1.7" />
       <module name="IndigenoUS-Seed-Network-Exchange" target="1.7" />
       <module name="IndigenoUS_Seed_Exchange_Network" target="17" />
