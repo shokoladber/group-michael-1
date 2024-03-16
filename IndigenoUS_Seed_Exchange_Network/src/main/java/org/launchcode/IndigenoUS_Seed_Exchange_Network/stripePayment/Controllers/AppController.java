@@ -31,7 +31,7 @@ public class AppController {
         model.addAttribute("lastName", request.getLastName());
         model.addAttribute("businessName", request.getBusinessName());
         model.addAttribute("amount", request.getAmount());
-        model.addAttribute("productName", request.getDonationNote());
+        model.addAttribute("donationName", request.getDonationNote());
         return "checkout";
     }
 }

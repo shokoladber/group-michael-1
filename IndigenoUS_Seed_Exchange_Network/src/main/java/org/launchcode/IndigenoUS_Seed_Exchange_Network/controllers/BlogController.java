@@ -7,6 +7,7 @@ import org.launchcode.IndigenoUS_Seed_Exchange_Network.data.BlogRepository;
 import org.launchcode.IndigenoUS_Seed_Exchange_Network.models.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -16,12 +17,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class BlogController {
     @Autowired
     BlogRepository blogRepository;
+
 
 
     @GetMapping("/blog")
@@ -107,7 +110,11 @@ public class BlogController {
         model.addAttribute("blogs", blogRepository.findAll());
         return "blog";
     }
+
+
 }
+
+
 
 //push
 

@@ -1,14 +1,14 @@
 package org.launchcode.IndigenoUS_Seed_Exchange_Network.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Blog {
@@ -28,6 +28,9 @@ public class Blog {
     private String content;
     private LocalDate time;
 
+
+
+
 //private String imageFilePath;
 
 //@ManyToOne
@@ -45,6 +48,9 @@ public class Blog {
         //   this.imageFilePath = imageFilePath;
     }
 
+    @OrderBy("time DESC")
+    @JdbcTypeCode(SqlTypes.JSON)
+    private List<Blog> blogs;
     //  public String getImageFilePath() {
     //      return imageFilePath;
     //  }
