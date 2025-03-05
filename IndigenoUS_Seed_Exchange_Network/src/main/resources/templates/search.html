@@ -1,18 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="~{fragments :: head}">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link th:href="@{/css/seed.css}" rel="stylesheet" />
+    <title th:text="${title}"></title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Indigenous Seed Exchange Network</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
 
-<div th:replace="~{fragments :: page-header}"></div>
+                <li>
+                    <a class="nav-link active" aria-current="page" href="/about">About Us</a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/application">Join Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/donate">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dataBase">Data Base</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container body-content">
-
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-
     <form th:action="@{/search/results}" method = "post">
         <h2>Search by:</h2>
-
         <p>
             <span th:each="column : ${columns}">
                 <input
@@ -23,9 +58,7 @@
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
-
         </p>
-
         <p>
             <label for="searchTerm">Keyword:</label>
             <input type="text" name="searchTerm" id="searchTerm" />
@@ -36,23 +69,57 @@
 
     <hr />
 
-    <table class="seed-listing">
+    <table class="list-seeds">
         <tr th:each="seed : ${seeds}">
             <td>
                 <p>
                     Seed Id:
                     <a th:href="@{'/view/' + ${seed.id}}" th:text="${seed.id}"></a>
-                </p>
-                <p th:text="${'Name: ' + seed.name}"></p>
-                <p>
+
                     Botanical Name:
-                    <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName.id}}" th:text="${seed.botanicalName.name}"></a>
+                <ul th:each = "botanicalName : ${seed.botanicalName}">
+                    <li>
+                    <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName}}" th:text="${seed.botanicalName}"></a>
+                    </li>
+                </ul>
                 </p>
                 <p>
                     Common Name:
-                <ul th:each="commonName : ${seed.commonNames}">
+                <ul th:each="commonName : ${seed.commonName}">
                     <li>
-                        <a th:href="@{'/commonNames/view/' + ${commonName.id}}" th:text="${commonName.name}"></a>
+                        <a th:href="@{'/view/' + ${commonName}}" th:text="${commonName}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Endangered:
+                <ul th:each="isEndangered : ${seed.endangered}">
+                    <li>
+                        <a th:href="@{'/view/' + ${isEndangered}}" th:text="${isEndangered}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Indigenous Sourced:
+                <ul th:each="sourceIsIndigenous : ${seed.sourceIsIndigenous}">
+                    <li>
+                        <a th:href="@{'/view/' + ${sourceIsIndigenous}}" th:text="${sourceIsIndigenous}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Plant Hardiness Zone:
+                <ul th:each="plantHardinessZone : ${seed.plantHardinessZone}">
+                    <li>
+                        <a th:href="@{'/view/' + ${plantHardinessZone}}" th:text="${plantHardinessZone}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Seed Quantity:
+                <ul th:each="seedQuantity : ${seed.seedQuantity}">
+                    <li>
+                        <a th:href="@{'/view/' + ${seedQuantity}}" th:text="${seedQuantity}"></a>
                     </li>
                 </ul>
                 </p>
@@ -60,7 +127,6 @@
             </td>
         </tr>
     </table>
-
 </div>
 
 </body>

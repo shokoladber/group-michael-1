@@ -1,25 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="~{fragments :: head}"></head>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link th:href="@{/css/blog.css}" rel="stylesheet" />
+    <title th:text="${title}"></title>
+</head>
 
-<body class="container  body-content">
-<h1 th:text="${'Seed: ' + seed.name}">Default Title</h1>
+<center>
+    <body>
 
-<nav th:replace="~{fragments :: page-header}"></nav>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Indigenous Seed Exchange Network</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
 
-<div class="seed-listing">
-    <p th:text="${'ID: ' + seed.id}"></p>
-    <p th:text="${'Name: ' + seed.name}"></p>
-    <p>
-        Botanical Name: <a th:href="@{'/botanicalNames/view/' + ${seed.botanicalName.id}}" th:text="${seed.botanicalName.name}"></a>
-    </p>
-    <p> Common Name:
-    <ul>
-        <li th:each="commonName : ${seed.commonName}">
-            <a th:href="@{'/commonNames/view/' + ${commonName.id}}" th:text="${commonName.name}"></a>
-        </li>
-    </ul>
-    </p>
-</div>
-</body>
-</html>
+                    <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <a class="nav-link active" aria-current="page" href="/about">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/application">Join Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/donate">Donate</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dataBase">Data Base</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="banner">
+        <br/>
+        <br/>
+        <br/>
+        <h1> Seed Added </h1>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <br/>
+    <br/>
+    <div class="container">
+        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=65c699b8088410001972804f&product=inline-share-buttons&source=platform" async="async"></script>
+
+        <form th:action="@{'/view/' + ${seed.id}}" th:object="${seed}" method="POST">
+            <div th:if="${seed}">
+                <div th:fragment="seed">
+
+                    <p th:text="${seed.botanicalName}"></p>
+                    <p th:text="${seed.commonName}"></p>
+                    <p th:text="${seed.seedQuantity}"></p>
+                    <p th:text="${seed.endangered}"></p>
+                    <p th:text="${seed.plantHardinessZone}"></p>
+                    <p th:text="${seed.sourceIsIndigenous}"></p>
+
+
+                </div>
+                <a th:href="@{'/list/' + ${seed.id} + '/editSeed'}" >Edit</a>
+                <a th:href="@{'/list/' + ${seed.id} + '/deleteSeed'}" >Delete</a>
+
+            </div>
+            <p th:unless="${seed}">No seeds found! (╯°□°）╯︵ ┻━┻ </p>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    </div>
+    </body>
+    <br/>
+    <footer>
+        <div class="sharethis-inline-share-buttons"></div>
+        <div class="copyright">
+            <br/>
+            2024 &copy by Anxious Syntax Squad
+        </div>
+    </footer>
+</center>
+</html>>
